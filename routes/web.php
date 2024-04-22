@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\ShopFruitController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['prefix'=>'shop-fruit'],function (){
+    Route::get('/',[ShopFruitController::class,'index'])->name('shop.index');
+    Route::get('/account/',[ShopFruitController::class,'account'])->name('shop.account');
+});
