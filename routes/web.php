@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Web\ShopFruitController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +23,25 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    //Web
+Route::group(['prefix'=>'shop-fruit'],function (){
+    Route::get('/',[ShopFruitController::class,'index'])->name('shop.index');
+    Route::get('/account/',[ShopFruitController::class,'account'])->name('shop.account');
+});
 
-Auth::routes();
+Route::group(['prefix'=>'shop-fruit/admin'],function (){
+    Route::get('/', [AdminController::class,'index'])->name('admin.index');
+    Route::get('/login',[AdminController::class,'login'])->name('admin.login');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+        //    Route Brand
+    Route::group(['prefix'=>'brands'],function (){
+        Route::get('/',[BrandController::class,'brand'])->name('admin.brand');
+        Route::get('/addForm',[BrandController::class,'addBrandForm'])->name('admin.add_brand');
+        Route::post('/store',[BrandController::class,'store'])->name('admin.store_brand');
+        Route::get('/edit/{id}',[BrandController::class,'editForm'])->name('admin.edit_brand');
+        Route::post('/update/{id}',[BrandController::class,'update'])->name('admin.update_brand');
+        Route::get('/destroy/{id}',[BrandController::class,'destroy'])->name('admin.destroy_brand');
+    });
+});
+
+
