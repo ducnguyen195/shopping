@@ -4,12 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="{{asset('images/favicon-fruit.png')}}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"  rel="stylesheet" />
     <title>Hala Fruit Administrator</title>
     <link rel="canonical" href="https://www.creative-tim.com/product/soft-ui-flowbite-pro">
     <link rel="stylesheet" href="https://demos.creative-tim.com/soft-ui-flowbite-pro/nucleo-icons.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/soft-ui-flowbite-pro/nucleo-svg.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/soft-ui-flowbite-pro/app.css">
+
     <script src="https://cdn.tiny.cloud/1/mk69788v7tsx0cmwwr9lyp9a26e4onnb5s9m9uk9bc4m40az/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
     @vite('resources/css/app.css')
     <script>
