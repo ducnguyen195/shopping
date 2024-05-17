@@ -26,8 +26,8 @@ class BrandController extends Controller
         $item['slug'] = $input['slug'] ?? Str::slug($input['name']);
         $item['description'] = $input['description'] ?? "";
         $item->save();
-
     }
+
     public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
         $input = $request->all();

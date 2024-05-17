@@ -27,9 +27,6 @@
             <div>
                 <h2 class="font-bold text-2xl"> Add New Brand</h2>
             </div>
-            <div>
-
-            </div>
         </div>
         <div class="m-5 p-5 grid grid-cols-2  " >
             <form action="{{route('admin.store_brand')}}"  method="POST"  class="w-full   col-span-1 self-center  rounded-2xl  shadow-lg shadow-gray-200   bg-white " >
