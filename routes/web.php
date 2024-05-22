@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Web\ShopFruitController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,12 +47,22 @@ Route::group(['prefix'=>'shop-fruit/admin'],function (){
 
     // Route Category
     Route::group(['prefix' => 'category'],function (){
-        Route::get('/',[CategoryController::class,'category'])->name('admin.category');
-        Route::get('/addForm',[CategoryController::class,'addCategoryForm'])->name('admin.add_category');
-        Route::post('/store',[CategoryController::class,'store'])->name('admin.store_category');
-        Route::get('/edit/{id}',[CategoryController::class,'editForm'])->name('admin.edit_category');
-        Route::post('/update/{id}',[CategoryController::class,'update'])->name('admin.update_category');
-        Route::get('/destroy/{id}',[CategoryController::class,'destroy'])->name('admin.destroy_category');
+        Route::get('/{model_type}/',[CategoryController::class,'category'])->name('admin.category');
+        Route::get('/{model_type}/addForm',[CategoryController::class,'addCategoryForm'])->name('admin.add_category');
+        Route::post('/{model_type}/store',[CategoryController::class,'store'])->name('admin.store_category');
+        Route::get('/{model_type}/edit/{id}',[CategoryController::class,'editForm'])->name('admin.edit_category');
+        Route::post('/{model_type}/update/{id}',[CategoryController::class,'update'])->name('admin.update_category');
+        Route::get('/{model_type}/destroy/{id}',[CategoryController::class,'destroy'])->name('admin.destroy_category');
+    });
+
+    // Route Post
+    Route::group(['prefix' => 'post'],function (){
+        Route::get('/',[PostController::class,'index'])->name('admin.post');
+        Route::get('/add',[PostController::class,'add'])->name('admin.add_post');
+        Route::post('/store',[PostController::class,'store'])->name('admin.store_post');
+        Route::get('/edit/{id}',[PostController::class,'edit'])->name('admin.edit_post');
+        Route::post('/update/{id}',[PostController::class,'update'])->name('admin.update_post');
+        Route::get('/destroy/{id}',[PostController::class,'destroy'])->name('admin.destroy_post');
     });
 });
 

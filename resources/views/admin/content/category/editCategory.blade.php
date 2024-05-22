@@ -30,7 +30,7 @@
 
         </div>
         <div class="m-5 p-5 grid grid-cols-3 gap-4 " >
-            <form action="{{route('admin.update_category',$category->id)}}"  method="POST"  class="w-full col-span-2 self-center rounded-2xl shadow-lg shadow-gray-200 bg-white " >
+            <form action="{{route('admin.update_category',[$model_type,$category->id])}}"  method="POST"  class="w-full col-span-2 self-center rounded-2xl shadow-lg shadow-gray-200 bg-white " >
                 @csrf
                 <div class=" mt-5 gap-4 px-10 ">
                     <div class="">

@@ -17,23 +17,29 @@
                         </li>
                         <li>
                             <div class="flex items-center">
+                                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                <a href="#" class="ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2">Category</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex items-center">
                                 <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd">
                                     </path>
                                 </svg>
-                                <span class="ml-1 text-sm font-medium text-gray-400 md:ml-2" aria-current="page">Category</span>
+                                <span class="ml-1 text-sm font-medium text-gray-400 md:ml-2" aria-current="page">{{$model_type}}</span>
                             </div>
                         </li>
                     </ol>
                 </nav>
-                <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl">All Category</h1>
+                <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl">All {{$model_type}}</h1>
                 <div class="block items-center sm:flex md:divide-x md:divide-gray-100">
                     <div class="flex items-center w-full sm:justify-end">
-                        <a href="{{route('admin.add_category')}}">
+                        <a href="{{route('admin.add_category',[$model_type] )}}">
                             <button type="button" data-modal-target="add-brand-modal" data-modal-toggle="add-brand-modal" class="inline-flex items-center py-2 px-3
                             text-sm font-medium text-center text-white rounded-lg bg-gradient-to-br from-pink-500 to-violet-700 sm:ml-auto shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform">
                                 <svg class="mr-2 -ml-1 w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
-                                Add Category
+                                Add {{$model_type}}
                             </button>
                         </a>
                     </div>
@@ -81,12 +87,16 @@
                                     <div class="text-base font-semibold text-gray-900">{{$item->name}}</div>
                                 </div>
                             </td>
-                            <td class="p-4 text-base font-medium text-gray-900  overflow-hidden whitespace-nowrap overflow-ellipsis w-[200px] lg:p-5">{!! $item -> slug !!}</td>
+                            <td class="p-4 text-base font-medium text-gray-900  lg:p-5 ">
+                                <p class="w-[500px]">
+                                    {!! $item -> slug !!}
+                                </p>
+                            </td>
                             <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">{{$item -> parent_id}}</td>
                             <td class="p-4 text-base font-normal text-gray-900 overflow-hidden whitespace-nowrap overflow-ellipsis lg:p-5">{{$item ->icon_path}}</td>
                             <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap lg:p-5">{{$item ->model_type}}</td>
                             <td class="p-4 space-x-2 whitespace-nowrap lg:p-5">
-                                <a href="{{route('admin.edit_category',$item ->id)}}">
+                                <a href="{{route('admin.edit_category',[$model_type,$item ->id])}}">
                                     <button type="button" data-modal-target="edit-brand-modal" data-modal-toggle="edit-brand-modal" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 hover:text-gray-900 hover:scale-[1.02] transition-all">
                                         <svg class="mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
                                         Edit brand
@@ -115,7 +125,7 @@
                                     <div class="p-6 pt-0 text-center">
                                         <svg class="mx-auto w-20 h-20 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                         <h3 class="mt-5 mb-6 text-xl font-normal text-gray-500">Are you sure you want to delete this brand ?</h3>
-                                        <a href="{{route('admin.destroy_category',$item->id)}}" class="text-white bg-gradient-to-br from-red-400 to-red-600 font-medium rounded-lg text-base inline-flex items-center px-3 py-2.5 text-center mr-2 shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform">
+                                        <a href="{{route('admin.destroy_category',[$model_type,$item ->id])}}" class="text-white bg-gradient-to-br from-red-400 to-red-600 font-medium rounded-lg text-base inline-flex items-center px-3 py-2.5 text-center mr-2 shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform">
                                             Yes, I'm sure
                                         </a>
                                         <a href="#" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 font-medium inline-flex items-center rounded-lg text-base px-3 py-2.5 text-center hover:scale-[1.02] transition-transform" data-modal-toggle="delete-brand-modal-{{$item->id}}">
