@@ -182,6 +182,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         'Barryvdh\Debugbar\ServiceProvider',
+        Darryldecode\Cart\CartServiceProvider::class,
 
 
 
@@ -214,6 +215,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Debugbar' => 'Barryvdh\Debugbar\Facade',
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
     ])->toArray(),
 
 ];

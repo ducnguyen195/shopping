@@ -65,7 +65,9 @@
                             <input type="text" id="image_label" class="form-control rounded-lg outline-violet-300 w-full" name="icon_path"
                                    aria-label="Image" aria-describedby="button-image">
                             <div class="input-group-append">
-                                <button class="text-white font-medium text-sm px-5 py-2.5 text-center rounded-lg bg-gradient-to-br from-pink-500 to-violet-500 shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform" type="button" id="button-image">Select</button>
+                                <button class="text-white font-medium text-sm px-5 py-2.5 text-center rounded-lg bg-gradient-to-br from-pink-500 to-violet-500 shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform" type="button" id="button-image">
+                                    Select
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -75,7 +77,7 @@
                     </div>
                     <div class=" mt-5 p-6 pl-0 rounded-b border-gray-200">
                         <button class="text-white font-medium text-sm px-5 py-2.5 text-center rounded-lg bg-gradient-to-br from-pink-500 to-violet-500 shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform" type="submit">
-                            Add {{$model_type}}
+                            Add category {{$model_type}}
                         </button>
                     </div>
                 </div>

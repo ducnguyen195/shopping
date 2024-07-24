@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
+            $table->string('model_type'); // model Post or Product
+            $table->bigInteger('model_id');
+            $table->mediumText('path');
+            $table->text('name');
+            $table->text('alt');
             $table->timestamps();
         });
     }

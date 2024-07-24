@@ -6,28 +6,34 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Traits\GroupCategoryTrait;
 
 class CategoryController extends Controller
 {
+    use GroupCategoryTrait;
     private function fillCategory($item,$input,$model_type): void
     {
         $item["name"] = $input["name"];
         $item['parent_id'] = $input['parent_id'];
         $item['slug'] = $input['slug'] ?? Str::slug($input['name']);
-        $item['icon_path'] = $input['icon_path'];
+        $item['icon_path'] = $input['icon_path'] ?? " ";
         $item['model_type'] = $model_type;
         $item->save();
     }
 
     public function category ($model_type): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $category = Category::where('model_type','=',$model_type)->get();
-        return view('admin.content.category.index',['category' => $category,'model_type'=> $model_type]);
+        $category = Category::where('model_type','=',$model_type)->paginate(10);
+        return view('admin.content.category.index',[
+            'category' => $category,
+            'model_type'=> $model_type,
+            'type_name' => $this->getGroupName($model_type),
+        ]);
     }
 
     public function addCategoryForm($model_type): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $option_parent_id = Category::where('parent_id','=',0)->with('children')->get();
+        $option_parent_id = Category::where('parent_id','=',0)->where('model_type','=',$model_type)->with('children')->get();
         return view('admin.content.category.addCategory',['option_parent_id' => $option_parent_id ,'model_type'=>$model_type]);
     }
 

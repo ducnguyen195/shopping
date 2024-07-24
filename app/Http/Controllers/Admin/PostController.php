@@ -5,41 +5,49 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Psy\Util\Str;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
     private function fillPost($item, $input): void
     {
         $item["name"] = $input["name"];
-        $item['slug'] = $input['slug'] ?? Str::slug($input('name'));
-        $item['category_id'] = $input['category_id'];
-        $item['description'] = $input['description'];
-        $item['content'] = $input['content'];
-        $item['seo_title'] = $input['seo_title'];
-        $item['seo_keywords'] = $input['seo_keywords'];
-        $item['seo_description'] = $input['seo_description'];
+        $item['slug'] = $input['slug'] ?? Str::slug($input['name']);
+        $item['category_id'] = $input['category_id'] ?? null;
+        $item['description'] = $input['description'] ?? "";
+        $item['content'] = $input['content'] ?? "";
+        $item['seo_title'] = $input['seo_title'] ?? '';
+        $item['seo_keywords'] = $input['seo_keywords'] ?? '';
+        $item['seo_description'] = $input['seo_description'] ?? '';
         $item['rating_value'] = 0;
         $item['rating_number'] = 0;
         $item['viewer'] = 0;
         $item->save();
 
     }
-    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function index(): View|Application|Factory
     {
-        $post = Post::all();
+        $posts = Post::whereHas('category', function ($query){
+            $query->where('model_type', '=', 'post');
+         })->get();
+        return view('admin.content.post.index',[
+            "post" =>$posts
+        ]);
 
-        return view('admin.content.post.index',['post' => $post ]);
     }
 
-    public function add(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function add(): View|Application|Factory
     {
-        $category = Category::all();
+        $category = Category::where('model_type','=','post')->where('parent_id','=',0)->with('children')->get();
         return view('admin.content.post.addFormPost',['category' => $category]);
     }
 
-    public function store(Request $request): \Illuminate\Http\RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
         $input = $request->all();
         $item = new Post();
@@ -47,14 +55,14 @@ class PostController extends Controller
         return redirect()->route('admin.post');
     }
 
-    public function edit($id): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function edit($id): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $post = Post::find($id);
         $category = $post->category;
         return view('admin.content.post.editPost',['post'=> $post,'category'=>$category]);
     }
 
-    public function update(Request $request, $id): \Illuminate\Http\RedirectResponse
+    public function update(Request $request, $id): RedirectResponse
     {
         $input = $request->all();
         $item = Post::find($id);
@@ -62,7 +70,8 @@ class PostController extends Controller
         return redirect()->route('admin.post');
     }
 
-    public function destroy($id) {
+    public function destroy($id): RedirectResponse
+    {
         $post = Post::find($id);
             if($post){
                 $post->delete();

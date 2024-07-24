@@ -6,60 +6,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{asset('backend/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/css/component/toast.css')}}">
+{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">--}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" ></script>
+{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>--}}
+
     @vite('resources/css/app.css')
 
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 ">
 <div class="w-full h-full">
-        {{--HEARDER--}}
+        {{--  TOAST--}}
+    <div id="toast"></div>
+    {{--HEARDER--}}
    <div class="w-full relative ">
        <div class="bg-[#3ba66b] w-ful h-full flex justify-around py-2 ">
            <div class="flex self-center">
-               <ul class="text-white text-sm font-bold flex  gap-6 ">
+               <ul class="text-white text-[16px] font-normal flex  gap-5 ">
                    <li class="hover:text-amber-400">
-                       <a href=""> Trang Chủ</a>
+                       <a href="{{route('shop.index')}}"> Trang Chủ</a>
                    </li>
                    <li class="group/edit hover:text-amber-400 relative ">
-                       <a href=""> Sản Phẩm </a>
-                       <i class="fa-solid fa-caret-down"></i>
-                       <ul class=" z-50 invisible group-hover/edit:visible absolute top-7 left-0 w-60 bg-white text-black  font-normal  border ">
-                           <li class="absolute -top-5 left-4">
-                               <div class="  text-3xl text-gray-50 ">
-                                   <i class="fa-solid fa-caret-up"></i>
-                               </div>
-                           </li>
-                           <li class=" group/item border-b w-full p-2 flex items-center justify-between relative">
-                               <a href=""> Trái cây nhập khẩu</a>
-                               <i class="fa-solid fa-caret-right"></i>
-                               <ul class=" invisible group-hover/item:visible  absolute top-0 left-60 bg-white w-full border mr-1 ">
-                                   <li class="border-b w-full p-2 flex items-center justify-between hover:text-amber-400">
-                                       <a href=""> Táo</a>
-                                   </li>
-                                   <li class="border-b w-full p-2 flex items-center justify-between hover:text-amber-400">
-                                       <a href=""> Nho</a>
-                                   </li>
-                                   <li class="border-b w-full p-2 flex items-center justify-between hover:text-amber-400">
-                                       <a href=""> Hồng treo gió</a>
-                                   </li>
-                               </ul>
-                           </li>
-                           <li  class="border-b w-full p-2 flex items-center justify-between">
-                               <a href=""> Giỏ trái cây 300k - 650k </a>
-                               <i class="fa-solid fa-caret-right"></i>
-                           </li>
-                           <li  class="border-b w-full p-2 flex items-center justify-between">
-                               <a href=""> Giỏ trái cây 700k - 900k </a>
-                               <i class="fa-solid fa-caret-right"></i>
-                           </li>
-                           <li  class="border-b w-full p-2 flex items-center justify-between">
-                               <a href=""> Giỏ trái cây trên 900k </a>
-                               <i class="fa-solid fa-caret-right"></i>
-                           </li>
-                           <li  class="border-b w-full p-2 flex items-center justify-between">
-                               <a href=""> Trái cây sấy , hạt dinh dưỡng </a>
-                               <i class="fa-solid fa-caret-right"></i>
-                           </li>
-                       </ul>
+                       <a href="{{route('shop.list_product')}}"> Sản Phẩm </a>
+                       <i class="fa-solid fa-caret-down group-hover/edit:rotate-180 transition-all ease-in-out duration-700 "></i>
+                        @include('web.component.dropMenu')
                    </li>
                    <li class="hover:text-amber-400">
                        <a href=""> Giới Thiệu </a>
@@ -71,14 +41,15 @@
                        <a href=""> Liên Hệ </a>
                    </li>
                </ul>
+
            </div>
            <div class="">
                <img src="{{asset('images/logo.png')}}" alt="" width="100" height="100">
            </div>
-           <div class="flex self-center gap-9 items-center ">
+           <div class="flex self-center gap-6 items-center ">
                <div >
-                   <form action="" class="relative  ">
-                       <input type="text" class="rounded-full p-3 outline-none" placeholder="Bạn cần tìm gì ?">
+                   <form action="" class="relative ">
+                       <input type="text" class="rounded-full p-3 outline-none w-60" placeholder="Bạn cần tìm gì ?">
                        <span class="absolute right-0 top-0 rounded-full w-1/4 h-full bg-amber-400 text-white text-xl flex items-center justify-center ">
                            <i class="fa-solid fa-magnifying-glass  "></i>
                        </span>
@@ -96,31 +67,51 @@
                </div>
                <div>
                    <div class="text-white text-2xl relative">
-                       <a href="">
+                       <button type="button" id="view-cart" data-modal-toggle="cart_body"  data-modal-target="cart_body"  >
                            <i class="fa-solid fa-bag-shopping"> </i>
-                       </a>
+                       </button>
+
                        <div class="absolute top-0 left-6 text-xs w-4 h-4 bg-amber-400 rounded-full flex justify-center">
                            <p class="">1</p>
                        </div>
                    </div>
                </div>
+               @include('web.component.modal_cart')
                <div>
                    <div class="group/item text-white text-2xl relative " >
-                       <a href="">
+                       <a href="{{route('shop.account')}}">
                            <i class="fa-solid fa-circle-user"> </i>
                        </a>
                        <div class=" absolute w-28 h-14 top-10 rounded bg-white right-0 z-50 shadow invisible  group-hover/item:visible">
                            <div class="relative ">
                                 <span class=" absolute -top-3.5 right-1.5 "> <i class="fa-solid fa-sort-up"></i> </span>
                            </div>
-                           <div class="text-sm w-full text-black flex justify-center pb-2 ">
-                               <div class=" h-auto " >
-                                   <div class=" w-full py-1 border-b">
-                                       <a href="" class="mt-2"> Đăng Nhập</a>
-                                   </div>
-                                   <div class="py-1">
-                                       <a href="" class=""> Đăng Ký</a>
-                                   </div>
+
+                           <div class="text-sm w-full text-black flex justify-center h-20 ">
+                               <div class=" h-full " >
+                                   @guest
+                                       <div class=" w-full py-1 border-b">
+                                           <a href="{{route('shop.account')}}" class="mt-2 text-black"> Đăng Nhập</a>
+                                       </div>
+                                       <div class="py-1">
+                                           <a href="{{route('shop.register_form')}}" class=" mt-2 text-black"> Đăng Ký </a>
+                                       </div>
+                                   @else
+                                       <div class=" w-full py-1 border-b">
+                                           <a href="#" class="mt-2"> {{ Auth::user()->name }}</a>
+                                       </div>
+                                       <div class=" w-full p-1 border-b ">
+                                           <a class="mt-1 " href="{{ route('logout') }}"
+                                              onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                               Đăng Xuất
+                                           </a>
+                                           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
+                                               @csrf
+                                           </form>
+                                       </div>
+
+                                   @endguest
                                </div>
                            </div>
                        </div>
@@ -129,16 +120,16 @@
            </div>
        </div>
        <div class="z-30  absolute left-0">
-           <img src="{{asset('images/bg-header.png')}}" alt="">
+           <img src="{{asset('images/bg-header.png')}}" alt="" class="h-11">
        </div>
    </div>
-        {{--  END HEADER--}}
+
         {{--    CONTENT--}}
     <div id="container" class="w-full h-full  ">
         @yield('content')
     </div>
     {{-- Navbar Scroll--}}
-    <div id="scroll_bar" class="grid gap-1  fixed bottom-40 right-2 z-50 " >
+    <div id="scroll_bar" class="grid gap-1  fixed bottom-40 right-2 z-40 " >
         <div class="text-white text-2xl bg-red-700 w-11 h-11 rounded-full flex justify-center items-center shadow-lg">
             <a href="" title="Gọi ngay cho chúng tôi"> <i class="fa-solid fa-phone"></i> </a>
         </div>
@@ -179,7 +170,7 @@
         {{--   FOOTER 1  --}}
         <div class="bg-[#3ba66b] font-normal text-white  text-center ">
             <div class="w-full px-32 py-2 grid grid-cols-3 gap-6 items-center ">
-                {{--     Block 1  --}}
+                {{--  Block 1  --}}
                 <div class=" flex-none self-center  ">
                     <div class=" " >
                         <div>
@@ -216,7 +207,7 @@
                         </ul>
                     </div>
                 </div>
-                {{--      Block 2  --}}
+                {{--  Block 2  --}}
                 <div class="">
                     <div class="flex justify-center mb-3">
                         <img src="{{asset('images/logo.png')}}" alt="" width="100" height="100">
@@ -234,7 +225,7 @@
                         <img src="{{asset('images/logo-bct.png')}}" alt="" width="170">
                     </a>
                 </div>
-                {{--      Block 3  --}}
+                {{--  Block 3  --}}
                 <div>
                     <h3 class="font-bold"> LIÊN HỆ VỚI CHÚNG TÔI </h3>
                     <div>
@@ -271,7 +262,7 @@
                     </div>
                 </div>
             </div>
-            {{--     FOOTER 2  --}}
+            {{--  FOOTER 2  --}}
             <div class="flex justify-between  border-t px-32  p-3 ">
                 <div>
                     <p>@ Bản quyền thuộc về Nóc</p>
@@ -294,8 +285,9 @@
         </div>
     </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" ></script>
 @include('partial.featureJsWeb')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+<script src="{{asset('backend/js/toast.js')}}"></script>
+
 </body>
 </html>

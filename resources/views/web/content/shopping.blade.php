@@ -1,80 +1,83 @@
 @extends('layouts.shoppingLayoutWeb')
 @section('content')
-    <div id="default-carousel" class="relative w-full h-full" data-carousel="slide">
-        <!-- Carousel wrapper -->
-        <div class="relative w-full h-full overflow-hidden  md:h-96 z-20">
-            <!-- Item 1 -->
-            <div class=" hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="{{asset('images/slider_2.webp')}} "  class="absolute block w-full h-[100%] -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 bg-cover bg-center" alt="...">
+    <div class="">
+        <div class="swiper mySwiper1 w-full">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"> <img src="{{asset('images/slider_1.webp')}}" alt=""> </div>
+                <div class="swiper-slide"> <img src="{{asset('images/slider_2.webp')}}" alt=""> </div>
+                <div class="swiper-slide"> <img src="{{asset('images/slider_3.webp')}}" alt=""> </div>
             </div>
-            <!-- Item 2 -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="{{asset('images/slider_1.webp')}}" class="absolute block w-full h-[100%] -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-            </div>
-            <!-- Item 3 -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="{{asset('images/slider_3.webp')}}" class="absolute block w-full h-[100%] -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
-        <!-- Slider indicators -->
-        <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-        </div>
-        <!-- Slider controls -->
-        <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-            </svg>
-            <span class="sr-only">Previous</span>
-        </span>
-        </button>
-        <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-            </svg>
-            <span class="sr-only">Next</span>
-        </span>
-        </button>
+
     </div>
-    <div class="px-32 mt-14 w-full h-full ">
-        <div class="">
-            <div class="grid grid-cols-4 gap-6 font-semibold ">
-                <div class="p-3 rounded-lg shadow-lg">
-                    <div class="p-3  ">
-                        <a href=""  class="hover:pt-10" > <img class="rounded transition-all ease-in-out  hover:translate-y-0.5  " src="{{asset('images/img_store_1.webp')}}" alt=""></a>
-                        <a href="" class=""> <h4 class="pt-4 flex justify-center"> Hala Fruit 24B7 Phạm Ngọc Thạch</h4> </a>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        let swiper1 = new Swiper(".mySwiper1", {
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
+
+    <div class="swiper mySwiper2 px-28 mt-14 w-full h-full">
+        <div class="swiper-wrapper p-3 ">
+            @foreach($shops as $shop)
+                <div class="swiper-slide  rounded-lg shadow-lg w-full ">
+                    <div class=" h-full  px-5">
+                        @php $shopImg = json_decode($shop->image_path) @endphp
+                        <a href="" class="hover:pt-10" >
+                            <img class="rounded transition-all ease-in-out hover:translate-y-0.5 w-full h-80  " src="{{asset($shopImg[0])}}" alt="">
+                        </a>
+                        <a href="" class="">
+                            <h4 class="mt-3 mb-2 flex justify-center font-medium"> {{$shop->name}}</h4>
+                        </a>
                     </div>
                 </div>
-                <div class="p-3 rounded-lg shadow-lg">
-                    <div class="p-3 ">
-                        <a href="" class="hover:pt-4"> <img class="rounded hover:translate-y-0.5 hover:transition-y " src="{{asset('images/img_store_2.webp')}}" alt=""></a>
-                        <a href=""> <h4 class="pt-3 flex justify-center"> Hala Fruit 97 Đào Tấn</h4> </a>
-                    </div>
-                </div>
-                <div class="p-3 rounded-lg shadow-lg">
-                    <div class="p-3">
-                        <a href="" class=""> <img class="rounded " src="{{asset('images/img_store_3.webp')}}" alt=""></a>
-                        <a href=""> <h4 class="pt-3 flex justify-center"> Hala Fruit 95 Xuân La</h4> </a>
-                    </div>
-                </div>
-                <div class="p-3 rounded-lg shadow-lg">
-                    <div class="p-3">
-                        <a href=""> <img class="rounded" src="{{asset('images/img_store_4.webp')}}" alt=""></a>
-                        <a href=""> <h4 class="pt-3 flex justify-center"> Hala Fruit 45 Chùa Láng</h4> </a>
-                    </div>
-                </div>
-                <div class="p-3 rounded-lg shadow-lg hidden">
-                    <div class="p-3">
-                        <a href=""> <img class="rounded" src="{{asset('images/img_store_5.webp')}}" alt=""></a>
-                        <a href=""> <h4 class="pt-3 flex justify-center"> Hala Fruit 20 Tràng Thi</h4> </a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        let swiper2 = new Swiper(".mySwiper2", {
+            slidesPerView: 4,
+            loop:false,
+            grapCursor:true,
+            autoplay: true,
+            playspeed:3000,
+            breakpoints: {
+                300: {
+                    slidesPerView: 2,
+                    spaceBetween: 5,
+                },
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                },
+                768: {
+                    slidesPerView: 4,
+                    spaceBetween: 30,
+                },
+                992: {
+                    slidesPerView: 4,
+                    spaceBetween: 30,
+                },
+                1199: {
+                    slidesPerView: 4,
+                    spaceBetween: 30,
+                },
+            },
+        });
+    </script>
+    <div class="px-32 mt-14 w-full h-full ">
         <div class="border-2 border-red-500 rounded-lg mt-20 ">
             <div class="flex justify-center  relative ">
                <h2 class="absolute -bottom-9  w-72 p-2 h-20 rounded-full shadow-2xl bg-white flex items-center justify-center ">
@@ -100,215 +103,44 @@
                </h2>
             </div>
             {{--     Product Sale--}}
-            <div class="grid grid-cols-5 pt-12  px-8 font-semibold bg-white ">
-                <div class="border-r py-10 px-6 w-full h-full grid-rows-2 bg-white ">
-                    <div class="grid group/item pt-2 z-10  ">
-                        <div class=" relative  overflow-hidden z-20 ">
-                            <a href="" class=""> <img src="{{asset('images/web/product/san-pham-3.webp')}}" class="p-1
-                            transition-all ease-in duration-300 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
-                            <div class="absolute top-0 left-0 bg-red-600  rounded font-normal px-2 ">
-                                <span class="text-white text-xs line-clamp-1"> - 28%</span>
+            <div class="grid grid-cols-5 p-4 font-semibold bg-white border-red-500 rounded-lg ">
+                @foreach( $sale_products->chunk(2) as $chunk)
+                    <div class=" py-10  w-full h-full grid-rows-3 bg-white ">
+                        @foreach($chunk as $sale_product)
+                            <div class=" grid-rows-2 group/item pt-4 z-10 px-6   ">
+                                <div class=" relative   rounded-lg overflow-hidden z-20 h-64 ">
+                                    @foreach($sale_product->images as $image)
+                                        @php $image_path = json_decode($image->path) @endphp
+                                        <a href="" class="">
+                                            <img src="{{asset($image_path[0])}}" class="p-1 w-full h-72  rounded-lg
+                                                 transition-all ease-in duration-300 group-hover/item:scale-105  group-hover/item:z-0" title="{{$sale_product->name}}" alt=" {{$image? $image->alt : $sale_product->name }}">
+                                        </a>
+                                    @endforeach
+                                    <div class="absolute top-0 left-0 bg-red-600 rounded-tl-xl rounded-br-xl font-normal px-3 ">
+                                        <span class="text-white text-xs line-clamp-1"> -{{ $sale_product->discount_persent}}% </span>
+                                    </div>
+                                    <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200  group-hover/item:bottom-2
+                                    group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
+                                        <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
+                                        <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
+                                    </div>
+                                </div>
+                                <div class=" z-30 bg-white group/item pt-2 ">
+                                    <a href="" class=" text-[15px] " title="{{$sale_product->name .' '. $sale_product->barcode}}">
+                                        <p class="whitespace-nowrap text-ellipsis overflow-hidden text-center">
+                                            {{$sale_product->name .' '. $sale_product->barcode}}
+                                        </p>
+                                    </a>
+                                    <div class="flex gap-4 justify-center">
+                                        @php $price_discount =$sale_product->price - (( $sale_product->price * $sale_product->discount_persent)/100) @endphp
+                                        <span class="text-red-500 font-bold">{{ number_format($price_discount,0,',','.') }}đ</span>
+                                        <span class="text-gray-400 text-sm line-through"> {{number_format($sale_product->price,0,',','.')}}đ</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200  group-hover/item:bottom-2
-                             group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
-                                <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                            </div>
-                        </div>
-                        <div class=" z-30 bg-white group/item pt-2 ">
-                            <a href="" class="flex justify-center"> Nho sữa Hàn Quốc Hộp</a>
-                            <div class="flex gap-4 justify-center">
-                                <span class="text-red-500 font-bold"> 790.000đ</span>
-                                <span class="text-gray-400 text-sm line-through"> 1.100.000</span>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
-                    <div class="grid group/item pt-2 z-10  ">
-                        <div class=" relative  z-20 overflow-hidden ">
-                            <a href="" class=""> <img src="{{asset('images/web/product/san-pham-3.webp')}}" class=" p-1
-                                   transition-all ease-in duration-200 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
-                            <div class="absolute top-0 left-0 bg-red-600  rounded font-normal px-2 ">
-                                <span class="text-white text-xs line-clamp-1"> - 28%</span>
-                            </div>
-                            <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200
-                                group-hover/item:bottom-2 group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
-                                <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                            </div>
-                        </div>
-                        <div class=" z-30 bg-white group/item pt-2 ">
-                            <a href="" class="flex justify-center"> Giỏ trái cây 790k </a>
-                            <div class="flex gap-4 justify-center">
-                                <span class="text-red-500 font-bold"> 790.000đ</span>
-                                <span class="text-gray-400 text-sm line-through"> 1.100.000</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="border-r py-10  w-full h-full grid-rows-3 bg-white ">
-                    <div class=" grid-rows-2 group/item pt-2 z-10  ">
-                        <div class=" relative  overflow-hidden z-20 row-span-2 ">
-                            <a href="" class=""> <img src="{{asset('images/web/product/gio-trai-cay-1.webp')}}" class="p-1  my-14
-                            transition-all ease-in duration-300 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
-                            <div class="absolute top-0 left-0 bg-red-600  rounded font-normal px-2 ">
-                                <span class="text-white text-xs line-clamp-1"> - 28%</span>
-                            </div>
-                            <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200  group-hover/item:bottom-2
-                             group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
-                                <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                            </div>
-                        </div>
-                        <div class=" z-30 bg-white group/item  ">
-                            <a href="" class="flex justify-center"> Giỏ trái cây 790k </a>
-                            <div class="flex gap-4 justify-center">
-                                <span class="text-red-500 font-bold"> 790.000đ</span>
-                                <span class="text-gray-400 text-sm line-through"> 1.100.000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-3 w-full h-full">
-                        <div class=" relative  ">
-                            <a href=""> <img class="h-full  my-14" src="{{asset('images/web/product/gio-trai-cay-2.webp')}}" alt="Nho sữa Hàn Quốc Hộp"></a>
-                            <div class="absolute top-0 left-0 bg-red-600  rounded font-normal px-2">
-                                <span class="text-white text-xs line-clamp-1"> - 28%</span>
-                            </div>
-                        </div>
-                        <div class="">
-                            <h4 class="flex justify-center"> Giỏ trái cây 1200k</h4>
-                            <div class="flex gap-4 justify-center">
-                                <span class="text-red-500 font-bold"> 1.200.000</span>
-                                <span class="text-gray-400 text-sm line-through"> 1.400.000</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="border-r py-10 px-6 w-full h-full grid-rows-2 bg-white ">
-                    <div class="grid group/item pt-2 z-10  ">
-                        <div class=" relative  overflow-hidden z-20 ">
-                            <a href="" class=""> <img src="{{asset('images/web/product/san-pham-3.webp')}}" class="p-1
-                            transition-all ease-in duration-300 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
-                            <div class="absolute top-0 left-0 bg-red-600  rounded font-normal px-2 ">
-                                <span class="text-white text-xs line-clamp-1"> - 28%</span>
-                            </div>
-                            <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200  group-hover/item:bottom-2
-                             group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
-                                <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                            </div>
-                        </div>
-                        <div class=" z-30 bg-white group/item pt-2 ">
-                            <a href="" class="flex justify-center"> Nho sữa Hàn Quốc Hộp</a>
-                            <div class="flex gap-4 justify-center">
-                                <span class="text-red-500 font-bold"> 790.000đ</span>
-                                <span class="text-gray-400 text-sm line-through"> 1.100.000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid group/item pt-2 z-10  ">
-                        <div class=" relative  z-20 overflow-hidden ">
-                            <a href="" class=""> <img src="{{asset('images/web/product/san-pham-3.webp')}}" class=" p-1
-                                   transition-all ease-in duration-200 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
-                            <div class="absolute top-0 left-0 bg-red-600  rounded font-normal px-2 ">
-                                <span class="text-white text-xs line-clamp-1"> - 28%</span>
-                            </div>
-                            <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200
-                                group-hover/item:bottom-2 group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
-                                <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                            </div>
-                        </div>
-                        <div class=" z-30 bg-white group/item pt-2 ">
-                            <a href="" class="flex justify-center"> Giỏ trái cây 790k </a>
-                            <div class="flex gap-4 justify-center">
-                                <span class="text-red-500 font-bold"> 790.000đ</span>
-                                <span class="text-gray-400 text-sm line-through"> 1.100.000</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="border-r py-10  w-full h-full grid-rows-3 bg-white ">
-                    <div class=" grid-rows-2 group/item pt-2 z-10  ">
-                        <div class=" relative  overflow-hidden z-20 row-span-2  ">
-                            <a href="" class=""> <img src="{{asset('images/web/product/gio-trai-cay-1.webp')}}" class="p-1  my-14
-                            transition-all ease-in duration-300 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
-                            <div class="absolute top-0 left-0 bg-red-600  rounded font-normal px-2 ">
-                                <span class="text-white text-xs line-clamp-1"> - 28%</span>
-                            </div>
-                            <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200  group-hover/item:bottom-2
-                             group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
-                                <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                            </div>
-                        </div>
-                        <div class=" z-30 bg-white group/item ">
-                            <a href="" class="flex justify-center"> Giỏ trái cây 790k </a>
-                            <div class="flex gap-4 justify-center">
-                                <span class="text-red-500 font-bold"> 790.000đ</span>
-                                <span class="text-gray-400 text-sm line-through"> 1.100.000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-3 w-full h-full">
-                        <div class=" relative ">
-                            <a href=""> <img class="h-full  my-14" src="{{asset('images/web/product/gio-trai-cay-2.webp')}}" alt="Nho sữa Hàn Quốc Hộp"></a>
-                            <div class="absolute top-0 left-0 bg-red-600  rounded font-normal px-2">
-                                <span class="text-white text-xs line-clamp-1"> - 28%</span>
-                            </div>
-                        </div>
-                        <div class="">
-                            <h4 class="flex justify-center"> Giỏ trái cây 1200k</h4>
-                            <div class="flex gap-4 justify-center">
-                                <span class="text-red-500 font-bold"> 1.200.000</span>
-                                <span class="text-gray-400 text-sm line-through"> 1.400.000</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class=" py-10 px-6 w-full h-full grid-rows-2 bg-white ">
-                    <div class="grid group/item pt-2 z-10  ">
-                        <div class=" relative  overflow-hidden z-20 ">
-                            <a href="" class=""> <img src="{{asset('images/web/product/san-pham-3.webp')}}" class="p-1
-                            transition-all ease-in duration-300 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
-                            <div class="absolute top-0 left-0 bg-red-600  rounded font-normal px-2 ">
-                                <span class="text-white text-xs line-clamp-1"> - 28%</span>
-                            </div>
-                            <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200  group-hover/item:bottom-2
-                             group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
-                                <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                            </div>
-                        </div>
-                        <div class=" z-30 bg-white group/item pt-2 ">
-                            <a href="" class="flex justify-center"> Nho sữa Hàn Quốc Hộp</a>
-                            <div class="flex gap-4 justify-center">
-                                <span class="text-red-500 font-bold"> 790.000đ</span>
-                                <span class="text-gray-400 text-sm line-through"> 1.100.000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid group/item pt-2 z-10  ">
-                        <div class=" relative  z-20 overflow-hidden ">
-                            <a href="" class=""> <img src="{{asset('images/web/product/san-pham-3.webp')}}" class=" p-1
-                                   transition-all ease-in duration-200 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
-                            <div class="absolute top-0 left-0 bg-red-600  rounded font-normal px-2 ">
-                                <span class="text-white text-xs line-clamp-1"> - 28%</span>
-                            </div>
-                            <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200
-                                group-hover/item:bottom-2 group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
-                                <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                            </div>
-                        </div>
-                        <div class=" z-30 bg-white group/item pt-2 ">
-                            <a href="" class="flex justify-center"> Giỏ trái cây 790k </a>
-                            <div class="flex gap-4 justify-center">
-                                <span class="text-red-500 font-bold"> 790.000đ</span>
-                                <span class="text-gray-400 text-sm line-through"> 1.100.000</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
         <div class="w-full ">
@@ -329,18 +161,28 @@
                 </div>
             </div>
         </div>
+
         {{--     Block product 1--}}
         <div class="w-full h-full grid grid-cols-12 gap-5 mt-8">
             <div style="background-image:url('{{asset('images/web/background/bg-title-link-1.webp')}}');" class=" rounded-2xl col-span-3 bg-cover w-full h-[100%]">
-                <div class="p-8" >
-                    <h2 class=" text-xl font-bold"> Trái cây nhập khẩu </h2>
+                @if(isset($cate_product[0]))
+                <div class="p-8 " >
+                    @foreach($cate_product[0] as $category)
+                    <h2 class=" text-xl font-bold hover:text-amber-400 ">
+                        <a href=""> {{$category->name}}</a>
+                    </h2>
                     <div class="mt-4">
-                        <a href="" > <i class="fa-solid fa-circle text-green-400 text-[7px]"></i> Táo</a> <br>
-                        <a href=""><i class="fa-solid fa-circle text-green-400 text-[7px]"></i> Nho</a> <br>
-                        <a href=""><i class="fa-solid fa-circle text-green-400 text-[7px]"></i> Hồng Treo Gió</a>
+                        @if($category->children)
+                            @foreach($category->children as $child)
+                                <a href="" class="hover:text-amber-400" >
+                                    <i class="fa-solid fa-circle text-green-400 text-[7px]"></i> {{$child->name}}</a> <br>
+                            @endforeach
+                        @endif
                     </div>
                     <button class="bg-red-600 text-white text-xs px-4 py-2 mt-4 rounded-full "> Mua ngay </button>
+                    @endforeach
                 </div>
+                @endif
             </div>
             <div class=" w-full h-full  col-span-9">
                 <div class="swiper mySwiper w-full h-full ">
@@ -383,158 +225,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-slide  w-1/6 border rounded-lg p-2">
-                            <div class="grid group/item pt-2 z-10  ">
-                                <div class=" relative overflow-hidden z-20 ">
-                                    <a href="" class=" flex justify-center"> <img src="{{asset('images/web/product/san-pham-1.webp')}}" class="p-1 w-3/4
-                                            transition-all ease-in duration-300 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
-                                    <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200  group-hover/item:bottom-2
-                                            group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
-                                        <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                        <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                                    </div>
-                                </div>
-                                <div class=" z-30 bg-white group/item pt-2 ">
-                                    <a href="" class="flex justify-center"> Nho sữa Hàn Quốc Hộp</a>
-                                    <div class="flex gap-4 justify-center">
-                                        <span class="text-red-500 font-bold"> 790.000đ</span>
-                                        <span class="text-gray-400 text-sm line-through"> 1.100.000</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid group/item pt-2 z-10  ">
-                                <div class=" relative overflow-hidden z-20 ">
-                                    <a href="" class=" flex justify-center"> <img src="{{asset('images/web/product/san-pham-2.webp')}}"  class="p-1 w-2/3
-                                                        transition-all ease-in duration-300 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
-                                    <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200  group-hover/item:bottom-2
-                                            group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
-                                        <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                        <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                                    </div>
-                                </div>
-                                <div class=" z-30 bg-white group/item pt-2 ">
-                                    <a href="" class="flex justify-center"> Nho sữa Hàn Quốc Hộp</a>
-                                    <div class="flex gap-4 justify-center">
-                                        <span class="text-red-500 font-bold"> 790.000đ</span>
-                                        <span class="text-gray-400 text-sm line-through"> 1.100.000</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide  w-1/6 border rounded-lg p-2">
-                            <div class="grid group/item pt-2 z-10  ">
-                                <div class=" relative overflow-hidden z-20 ">
-                                    <a href="" class=""> <img src="{{asset('images/web/product/gio-trai-cay-2.webp')}}" class="p-1
-                                            transition-all ease-in duration-300 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
-                                    <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200  group-hover/item:bottom-2
-                                            group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
-                                        <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                        <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                                    </div>
-                                </div>
-                                <div class=" z-30 bg-white group/item pt-2 ">
-                                    <a href="" class="flex justify-center"> Nho sữa Hàn Quốc Hộp</a>
-                                    <div class="flex gap-4 justify-center">
-                                        <span class="text-red-500 font-bold"> 790.000đ</span>
-                                        <span class="text-gray-400 text-sm line-through"> 1.100.000</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid group/item pt-2 z-10  ">
-                                <div class=" relative overflow-hidden z-20 ">
-                                    <a href="" class=""> <img src="{{asset('images/web/product/gio-trai-cay-1.webp')}}" class="p-1
-                                                        transition-all ease-in duration-300 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
-                                    <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200  group-hover/item:bottom-2
-                                            group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
-                                        <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                        <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                                    </div>
-                                </div>
-                                <div class=" z-30 bg-white group/item pt-2 ">
-                                    <a href="" class="flex justify-center"> Nho sữa Hàn Quốc Hộp</a>
-                                    <div class="flex gap-4 justify-center">
-                                        <span class="text-red-500 font-bold"> 790.000đ</span>
-                                        <span class="text-gray-400 text-sm line-through"> 1.100.000</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide  w-1/6 border rounded-lg p-2">
-                            <div class="grid group/item pt-2 z-10  ">
-                                <div class=" relative overflow-hidden z-20 ">
-                                    <a href="" class=""> <img src="{{asset('images/web/product/gio-trai-cay-2.webp')}}" class="p-1
-                                            transition-all ease-in duration-300 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
-                                    <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200  group-hover/item:bottom-2
-                                            group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
-                                        <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                        <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                                    </div>
-                                </div>
-                                <div class=" z-30 bg-white group/item pt-2 ">
-                                    <a href="" class="flex justify-center"> Nho sữa Hàn Quốc Hộp</a>
-                                    <div class="flex gap-4 justify-center">
-                                        <span class="text-red-500 font-bold"> 790.000đ</span>
-                                        <span class="text-gray-400 text-sm line-through"> 1.100.000</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid group/item pt-2 z-10  ">
-                                <div class=" relative overflow-hidden z-20 ">
-                                    <a href="" class=""> <img src="{{asset('images/web/product/gio-trai-cay-1.webp')}}" class="p-1
-                                                        transition-all ease-in duration-300 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
-                                    <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200  group-hover/item:bottom-2
-                                            group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
-                                        <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                        <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                                    </div>
-                                </div>
-                                <div class=" z-30 bg-white group/item pt-2 ">
-                                    <a href="" class="flex justify-center"> Nho sữa Hàn Quốc Hộp</a>
-                                    <div class="flex gap-4 justify-center">
-                                        <span class="text-red-500 font-bold"> 790.000đ</span>
-                                        <span class="text-gray-400 text-sm line-through"> 1.100.000</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide  w-1/6 border rounded-lg p-2">
-                            <div class="grid group/item pt-2 z-10  ">
-                                <div class=" relative overflow-hidden z-20 ">
-                                    <a href="" class=""> <img src="{{asset('images/web/product/gio-trai-cay-2.webp')}}" class="p-1
-                                            transition-all ease-in duration-300 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
-                                    <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200  group-hover/item:bottom-2
-                                            group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
-                                        <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                        <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                                    </div>
-                                </div>
-                                <div class=" z-30 bg-white group/item pt-2 ">
-                                    <a href="" class="flex justify-center"> Nho sữa Hàn Quốc Hộp</a>
-                                    <div class="flex gap-4 justify-center">
-                                        <span class="text-red-500 font-bold"> 790.000đ</span>
-                                        <span class="text-gray-400 text-sm line-through"> 1.100.000</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid group/item pt-2 z-10  ">
-                                <div class=" relative overflow-hidden z-20 ">
-                                    <a href="" class=""> <img src="{{asset('images/web/product/gio-trai-cay-1.webp')}}" class="p-1
-                                                        transition-all ease-in duration-300 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
-                                    <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200  group-hover/item:bottom-2
-                                            group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
-                                        <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                        <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                                    </div>
-                                </div>
-                                <div class=" z-30 bg-white group/item pt-2 ">
-                                    <a href="" class="flex justify-center"> Nho sữa Hàn Quốc Hộp</a>
-                                    <div class="flex gap-4 justify-center">
-                                        <span class="text-red-500 font-bold"> 790.000đ</span>
-                                        <span class="text-gray-400 text-sm line-through"> 1.100.000</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                     <div class="swiper-button-prev border w-8 h-8 focus:text-xs rounded-full button_navigation "  style="font-size: 5px !important;"></div>
                     <div class="swiper-button-next"></div>
@@ -551,158 +242,6 @@
                             <div class="grid group/item pt-2 z-10  ">
                                 <div class=" relative overflow-hidden z-20 ">
                                     <a href="" class="flex justify-center"> <img src="{{asset('images/web/product/gio-trai-cay-2.webp')}}" class="p-1
-                                            transition-all ease-in duration-300 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
-                                    <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200  group-hover/item:bottom-2
-                                            group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
-                                        <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                        <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                                    </div>
-                                </div>
-                                <div class=" z-30 bg-white group/item pt-2 ">
-                                    <a href="" class="flex justify-center"> Nho sữa Hàn Quốc Hộp</a>
-                                    <div class="flex gap-4 justify-center">
-                                        <span class="text-red-500 font-bold"> 790.000đ</span>
-                                        <span class="text-gray-400 text-sm line-through"> 1.100.000</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid group/item pt-2 z-10  ">
-                                <div class=" relative overflow-hidden z-20 ">
-                                    <a href="" class=""> <img src="{{asset('images/web/product/gio-trai-cay-1.webp')}}" class="p-1
-                                                        transition-all ease-in duration-300 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
-                                    <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200  group-hover/item:bottom-2
-                                            group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
-                                        <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                        <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                                    </div>
-                                </div>
-                                <div class=" z-30 bg-white group/item pt-2 ">
-                                    <a href="" class="flex justify-center"> Nho sữa Hàn Quốc Hộp</a>
-                                    <div class="flex gap-4 justify-center">
-                                        <span class="text-red-500 font-bold"> 790.000đ</span>
-                                        <span class="text-gray-400 text-sm line-through"> 1.100.000</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide  w-1/6 border rounded-lg p-2">
-                            <div class="grid group/item pt-2 z-10  ">
-                                <div class=" relative overflow-hidden z-20 ">
-                                    <a href="" class=" flex justify-center"> <img src="{{asset('images/web/product/san-pham-1.webp')}}" class="p-1 w-3/4
-                                            transition-all ease-in duration-300 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
-                                    <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200  group-hover/item:bottom-2
-                                            group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
-                                        <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                        <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                                    </div>
-                                </div>
-                                <div class=" z-30 bg-white group/item pt-2 ">
-                                    <a href="" class="flex justify-center"> Nho sữa Hàn Quốc Hộp</a>
-                                    <div class="flex gap-4 justify-center">
-                                        <span class="text-red-500 font-bold"> 790.000đ</span>
-                                        <span class="text-gray-400 text-sm line-through"> 1.100.000</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid group/item pt-2 z-10  ">
-                                <div class=" relative overflow-hidden z-20 ">
-                                    <a href="" class=" flex justify-center"> <img src="{{asset('images/web/product/san-pham-2.webp')}}"  class="p-1 w-2/3
-                                                        transition-all ease-in duration-300 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
-                                    <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200  group-hover/item:bottom-2
-                                            group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
-                                        <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                        <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                                    </div>
-                                </div>
-                                <div class=" z-30 bg-white group/item pt-2 ">
-                                    <a href="" class="flex justify-center"> Nho sữa Hàn Quốc Hộp</a>
-                                    <div class="flex gap-4 justify-center">
-                                        <span class="text-red-500 font-bold"> 790.000đ</span>
-                                        <span class="text-gray-400 text-sm line-through"> 1.100.000</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide  w-1/6 border rounded-lg p-2">
-                            <div class="grid group/item pt-2 z-10  ">
-                                <div class=" relative overflow-hidden z-20 ">
-                                    <a href="" class=""> <img src="{{asset('images/web/product/gio-trai-cay-2.webp')}}" class="p-1
-                                            transition-all ease-in duration-300 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
-                                    <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200  group-hover/item:bottom-2
-                                            group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
-                                        <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                        <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                                    </div>
-                                </div>
-                                <div class=" z-30 bg-white group/item pt-2 ">
-                                    <a href="" class="flex justify-center"> Nho sữa Hàn Quốc Hộp</a>
-                                    <div class="flex gap-4 justify-center">
-                                        <span class="text-red-500 font-bold"> 790.000đ</span>
-                                        <span class="text-gray-400 text-sm line-through"> 1.100.000</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid group/item pt-2 z-10  ">
-                                <div class=" relative overflow-hidden z-20 ">
-                                    <a href="" class=""> <img src="{{asset('images/web/product/gio-trai-cay-1.webp')}}" class="p-1
-                                                        transition-all ease-in duration-300 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
-                                    <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200  group-hover/item:bottom-2
-                                            group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
-                                        <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                        <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                                    </div>
-                                </div>
-                                <div class=" z-30 bg-white group/item pt-2 ">
-                                    <a href="" class="flex justify-center"> Nho sữa Hàn Quốc Hộp</a>
-                                    <div class="flex gap-4 justify-center">
-                                        <span class="text-red-500 font-bold"> 790.000đ</span>
-                                        <span class="text-gray-400 text-sm line-through"> 1.100.000</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide  w-1/6 border rounded-lg p-2">
-                            <div class="grid group/item pt-2 z-10  ">
-                                <div class=" relative overflow-hidden z-20 ">
-                                    <a href="" class=""> <img src="{{asset('images/web/product/gio-trai-cay-2.webp')}}" class="p-1
-                                            transition-all ease-in duration-300 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
-                                    <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200  group-hover/item:bottom-2
-                                            group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
-                                        <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                        <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                                    </div>
-                                </div>
-                                <div class=" z-30 bg-white group/item pt-2 ">
-                                    <a href="" class="flex justify-center"> Nho sữa Hàn Quốc Hộp</a>
-                                    <div class="flex gap-4 justify-center">
-                                        <span class="text-red-500 font-bold"> 790.000đ</span>
-                                        <span class="text-gray-400 text-sm line-through"> 1.100.000</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid group/item pt-2 z-10  ">
-                                <div class=" relative overflow-hidden z-20 ">
-                                    <a href="" class=""> <img src="{{asset('images/web/product/gio-trai-cay-1.webp')}}" class="p-1
-                                                        transition-all ease-in duration-300 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
-                                    <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200  group-hover/item:bottom-2
-                                            group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
-                                        <button class="rounded-full bg-red-600 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                        <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                                    </div>
-                                </div>
-                                <div class=" z-30 bg-white group/item pt-2 ">
-                                    <a href="" class="flex justify-center"> Nho sữa Hàn Quốc Hộp</a>
-                                    <div class="flex gap-4 justify-center">
-                                        <span class="text-red-500 font-bold"> 790.000đ</span>
-                                        <span class="text-gray-400 text-sm line-through"> 1.100.000</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide  w-1/6 border rounded-lg p-2">
-                            <div class="grid group/item pt-2 z-10  ">
-                                <div class=" relative overflow-hidden z-20 ">
-                                    <a href="" class=""> <img src="{{asset('images/web/product/gio-trai-cay-2.webp')}}" class="p-1
                                             transition-all ease-in duration-300 group-hover/item:scale-110  group-hover/item:z-0 " alt="Nho sữa Hàn Quốc Hộp"></a>
                                     <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200  group-hover/item:bottom-2
                                             group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center gap-2">
@@ -777,7 +316,6 @@
 
                 </div>
             </div>
-
         </div>
         {{--     Block product 3--}}
         <div class="w-full h-full grid grid-cols-12 gap-5 mt-8">
@@ -1249,7 +787,6 @@
                     <button class="bg-red-600 text-white text-xs px-4 py-2 mt-4 rounded-full "> Mua ngay </button>
                 </div>
             </div>
-
         </div>
         {{--    Block product 5--}}
         <div class="w-full h-full grid grid-cols-12 gap-5 mt-8">
@@ -1435,67 +972,20 @@
         {{--    Block adress shop--}}
         <div class="w-full  mt-12 ">
             <div class="grid grid-cols-5 w-full  gap-4">
-                <div class="col-span-1 w-full flex justify-center py-3 px-6 bg-cover bg-center  rounded-3xl shadow hover:drop-shadow-lg  hover:shadow-gray-400 " style=" background-image:url('{{asset('images/web/background/background-address.webp')}}')  ">
-                    <div class=" text-center">
-                        <h3 class="font-bold text-green-400 text-2xl"> Hala Fruit Xuân La</h3>
-                       <div class="mt-8">
-                           <p>Số 95 Xuân La - Tây Hồ - Hà Nôi</p>
-                           <p>0379.866.333</p>
-                       </div>
-                        <div class="mt-2">
-                            <a href="" class=" decoration-1 underline font-bold"> Đi đến cửa hàng</a>
+                @foreach($shops as $shop)
+                    <div class="col-span-1 w-full flex justify-center py-3 px-6 bg-cover bg-center  rounded-3xl shadow hover:drop-shadow-lg  hover:shadow-gray-400 " style=" background-image:url('{{asset('images/web/background/background-address.webp')}}')  ">
+                        <div class=" text-center">
+                            <h3 class="font-bold text-green-400 text-2xl"> {{$shop->name}}</h3>
+                            <div class="mt-8">
+                                <p>{{$shop->address}}</p>
+                                <p>{{$shop->phone}}</p>
+                            </div>
+                            <div class="mt-2">
+                                <a href="{{$shop->google_map}}" class=" decoration-1 underline font-bold"> Đi đến cửa hàng</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-span-1 w-full flex justify-center py-3 px-6 bg-cover bg-center rounded-3xl shadow hover:drop-shadow-lg  hover:shadow-gray-400 " style=" background-image:url('{{asset('images/web/background/background-address.webp')}}')  ">
-                    <div class=" text-center">
-                        <h3 class="font-bold text-green-400 text-2xl"> Hala Fruit Đào Tấn</h3>
-                        <div class="mt-8">
-                            <p>Số 97 Đào Tấn - Ba Đình - Hà Nội</p>
-                            <p>0379.866.333</p>
-                        </div>
-                        <div class="mt-2">
-                            <a href="" class=" decoration-1 underline font-bold"> Đi đến cửa hàng</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-span-1 w-full flex justify-center py-3 px-6 bg-cover bg-center rounded-3xl shadow hover:drop-shadow-lg  hover:shadow-gray-400 " style=" background-image:url('{{asset('images/web/background/background-address.webp')}}')  ">
-                    <div class=" text-center">
-                        <h3 class="font-bold text-green-400 text-2xl"> Hala Fruit Phạm Ngọc Thạch</h3>
-                        <div class="mt-8">
-                            <p>Số 24B7 Phạm Ngọc Thạch - Đống Đa - HN</p>
-                            <p>0379.866.333</p>
-                        </div>
-                        <div class="mt-2">
-                            <a href="" class=" decoration-1 underline font-bold"> Đi đến cửa hàng</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-span-1 w-full flex justify-center py-3 px-6 bg-cover bg-center rounded-3xl shadow hover:drop-shadow-lg  hover:shadow-gray-400 " style=" background-image:url('{{asset('images/web/background/background-address.webp')}}')  ">
-                    <div class=" text-center">
-                        <h3 class="font-bold text-green-400 text-2xl"> Hala Fruit Chùa Láng</h3>
-                        <div class="mt-8">
-                            <p class="font-normal">45 P. Chùa Láng, Láng Thượng, Đống Đa, Hà Nội</p>
-                            <p>0379.866.333</p>
-                        </div>
-                        <div class="mt-2">
-                            <a href="" class=" decoration-1 underline font-bold"> Đi đến cửa hàng</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-span-1 w-full flex justify-center py-3 px-6 bg-cover bg-center rounded-3xl shadow hover:drop-shadow-lg  hover:shadow-gray-400 " style=" background-image:url('{{asset('images/web/background/background-address.webp')}}')  ">
-                    <div class=" text-center">
-                        <h3 class="font-bold text-green-400 text-2xl"> Hala Fruit Tràng Thi</h3>
-                        <div class="mt-8">
-                            <p class="font-normal">20 Tràng Thi- Hàng Trống- Hoàn Kiếm HN</p>
-                            <p>0379.866.333</p>
-                        </div>
-                        <div class="mt-2">
-                            <a href="" class=" decoration-1 underline font-bold"> Đi đến cửa hàng</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                @endforeach
         </div>
         {{--    Blog news--}}
         <div class="w-full h-full mt-16">
@@ -1565,7 +1055,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        var swiper = new Swiper('.mySwiper', {
+       let swiper = new Swiper('.mySwiper', {
             slidesPerView: 4,
             spaceBetween: 30,
             loop: true,
@@ -1573,7 +1063,6 @@
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
-
         });
     </script>
 @endsection

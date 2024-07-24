@@ -63,9 +63,6 @@
                                     Category Id
                                 </th>
                                 <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5">
-                                    Content
-                                </th>
-                                <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5">
                                     Description
                                 </th>
                                 <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5">
@@ -102,12 +99,7 @@
                                         </div>
                                     </td>
                                     <td class="p-4 text-base font-medium text-gray-900  overflow-hidden whitespace-nowrap overflow-ellipsis w-[200px] lg:p-5">{!! $item -> slug !!}</td>
-                                    <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">{{$item -> category_id}}</td>
-                                    <td class="p-4 text-base font-normal text-gray-900  lg:p-5">
-                                        <p class="w-[800px]">
-                                            {!! $item ->content !!}
-                                        </p>
-                                    </td>
+                                    <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">{{$item -> category->name}}</td>
                                     <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap lg:p-5">
                                         <p class="w-96">
                                             {!! $item ->description !!}
