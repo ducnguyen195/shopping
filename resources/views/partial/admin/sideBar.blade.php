@@ -1,11 +1,11 @@
 <aside id="sidebar" class="flex hidden  fixed top-0 left-0 z-20 flex-col flex-shrink-0 pt-16 w-64 h-full duration-200 lg:flex transition-width" aria-label="Sidebar">
-    <div class="flex relative flex-col flex-1 pt-0 min-h-0 bg-gray-50">
-        <div class="flex overflow-y-auto flex-col flex-1 pt-8 pb-4">
-            <div class="flex-1 px-3 bg-gray-50" id="sidebar-items">
+    <div class="flex relative flex-col flex-1 pt-0 min-h-0 bg-green-500">
+        <div class="flex overflow-y-auto overflow-hidden flex-col flex-1 pt-8 pb-4">
+            <div class="flex-1 px-2 bg-green-500" id="sidebar-items">
                 <ul class="pb-2 pt-1">
                     <li>
                         <form action="#" method="GET" class="lg:hidden">
-                            <label for="mobile-search" class="sr-only">Search</label>
+                            <label for="mobile-search" class="sr-only"> Search </label>
                             <div class="relative">
                                 <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                                     <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -18,8 +18,8 @@
                         </form>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center py-2.5 px-4 text-base font-normal text-dark-500 rounded-lg hover:bg-gray-200 group  transition-all duration-200" sidebar-toggle-collapse="">
-                            <div class="bg-white shadow-lg shadow-gray-300  text-dark-700 w-8 h-8 p-2.5 mr-1 rounded-lg text-center grid place-items-center">
+                        <a href="#" class="flex items-center py-2.5 px-4 text-base font-normal text-white hover:text-blue-600  rounded-lg hover:bg-gray-200 group  transition-all duration-200" sidebar-toggle-collapse="">
+                            <div class="bg-white text-dark-700 w-8 h-8 p-2.5 mr-1 rounded-lg text-center grid place-items-center">
                                 <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                     <title>shop </title>
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -34,15 +34,15 @@
                                     </g>
                                 </svg>
                             </div>
-                            <span class="ml-3 text-black text-sm " sidebar-toggle-item="">
+                            <span class="ml-3 font-bold " sidebar-toggle-item="">
                                 Dashboard
                             </span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('admin.brand')}}" class="flex items-center py-2.5 px-4 text-base font-normal text-dark-500 rounded-lg  hover:bg-gray-200 group transition-all duration-200" sidebar-toggle-collapse="">
-                            <div class="bg-white shadow-lg shadow-gray-300  text-dark-700 w-8 h-8 p-2.5 mr-1 rounded-lg text-center grid place-items-center">
-                                <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <a href="{{route('admin.brand')}}" class="flex items-center py-2.5 px-4 text-base font-normal text-white hover:text-blue-600 rounded-lg  hover:bg-gray-200 group transition-all duration-200" sidebar-toggle-collapse="">
+                            <div class="bg-white  text-dark-700 w-8 h-8 mr-1 rounded-lg text-center grid place-items-center">
+                                <svg width="15px" height="15px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                     <title>document</title>
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                         <g transform="translate(-1870.000000, -591.000000)" fill="currentColor" fill-rule="nonzero">
@@ -56,38 +56,25 @@
                                     </g>
                                 </svg>
                             </div>
-                            <span class="ml-3 text-black-50 text-sm" sidebar-toggle-item="">
-                                Brand
+                            <span class="ml-3 font-bold text-sm" sidebar-toggle-item="">
+                                Thương Hiệu
                             </span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('admin.post')}}" class="flex items-center py-2.5 px-4 text-base font-normal text-dark-500 rounded-lg hover:bg-gray-200  group transition-all duration-200" sidebar-toggle-collapse="">
-                            <div class="bg-white shadow-lg shadow-gray-300  text-dark-700 w-8 h-8 p-2.5 mr-1 rounded-lg text-center grid place-items-center">
-                                <svg class="text-dark mb-1" width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                    <title>box-3d-50</title>
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <g transform="translate(-2319.000000, -291.000000)" fill="currentColor" fill-rule="nonzero">
-                                            <g transform="translate(1716.000000, 291.000000)">
-                                                <g transform="translate(603.000000, 0.000000)">
-                                                    <path class="color-background" d="M22.7597136,19.3090182 L38.8987031,11.2395234 C39.3926816,10.9925342 39.592906,10.3918611 39.3459167,9.89788265 C39.249157,9.70436312 39.0922432,9.5474453 38.8987261,9.45068056 L20.2741875,0.1378125 L20.2741875,0.1378125 C19.905375,-0.04725 19.469625,-0.04725 19.0995,0.1378125 L3.1011696,8.13815822 C2.60720568,8.38517662 2.40701679,8.98586148 2.6540352,9.4798254 C2.75080129,9.67332903 2.90771305,9.83023153 3.10122239,9.9269862 L21.8652864,19.3090182 C22.1468139,19.4497819 22.4781861,19.4497819 22.7597136,19.3090182 Z"></path>
-                                                    <path class="color-background" d="M23.625,22.429159 L23.625,39.8805372 C23.625,40.4328219 24.0727153,40.8805372 24.625,40.8805372 C24.7802551,40.8805372 24.9333778,40.8443874 25.0722402,40.7749511 L41.2741875,32.673375 L41.2741875,32.673375 C41.719125,32.4515625 42,31.9974375 42,31.5 L42,14.241659 C42,13.6893742 41.5522847,13.241659 41,13.241659 C40.8447549,13.241659 40.6916418,13.2778041 40.5527864,13.3472318 L24.1777864,21.5347318 C23.8390024,21.7041238 23.625,22.0503869 23.625,22.429159 Z" opacity="0.7"></path>
-                                                    <path class="color-background" d="M20.4472136,21.5347318 L1.4472136,12.0347318 C0.953235098,11.7877425 0.352562058,11.9879669 0.105572809,12.4819454 C0.0361450918,12.6208008 6.47121774e-16,12.7739139 0,12.929159 L0,30.1875 L0,30.1875 C0,30.6849375 0.280875,31.1390625 0.7258125,31.3621875 L19.5528096,40.7750766 C20.0467945,41.0220531 20.6474623,40.8218132 20.8944388,40.3278283 C20.963859,40.1889789 21,40.0358742 21,39.8806379 L21,22.429159 C21,22.0503869 20.7859976,21.7041238 20.4472136,21.5347318 Z" opacity="0.7"></path>
-                                                </g>
-                                            </g>
-                                        </g>
-                                    </g>
-                                </svg>
+                        <a href="{{route('admin.post')}}" class="flex items-center py-2.5 px-4 text-base font-normal text-white hover:text-blue-600 rounded-lg hover:bg-gray-200  group transition-all duration-200" sidebar-toggle-collapse="">
+                            <div class="bg-white text-dark-700 w-8 h-8  mr-1 rounded-lg text-center grid place-items-center">
+                                <i class="fa-regular fa-newspaper"></i>
                             </div>
-                            <span class="ml-3 text-black text-sm " sidebar-toggle-item="">
-                                Post
+                            <span class="ml-3 font-bold text-sm  " sidebar-toggle-item="">
+                                Bài Viết
                             </span>
                         </a>
                     </li>
                     <li>
-                        <button type="button" class="w-full flex items-center py-2.5 px-4 text-base font-normal text-dark-500 rounded-lg hover:bg-gray-200  group transition-all duration-200" sidebar-toggle-collapse="" aria-controls="dropdown-ecommerce" data-collapse-toggle="dropdown-ecommerce" aria-expanded="true">
-                            <div class="bg-white shadow-lg shadow-gray-300  text-dark-700 w-8 h-8 p-2.5 mr-1 rounded-lg text-center grid place-items-center">
-                                <svg class="text-dark" width="12px" height="12px" viewBox="0 0 42 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <button type="button" class="w-full flex items-center py-2.5 px-4 text-base font-normal text-white hover:text-blue-600 rounded-lg hover:bg-gray-200  group transition-all duration-200" sidebar-toggle-collapse="" aria-controls="dropdown-ecommerce" data-collapse-toggle="dropdown-ecommerce" aria-expanded="true">
+                            <div class="bg-white  text-dark-700 w-8 h-8  mr-1 rounded-lg text-center grid place-items-center">
+                                <svg class="text-dark" width="15px" height="15px" viewBox="0 0 42 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                     <title>basket</title>
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                         <g transform="translate(-1869.000000, -741.000000)" fill="currentColor" fill-rule="nonzero">
@@ -101,8 +88,8 @@
                                     </g>
                                 </svg>
                             </div>
-                            <span class="ml-3 text-black text-sm font-normal" sidebar-toggle-item="">
-                                Category
+                            <span class="ml-2  text-sm font-bold " sidebar-toggle-item="">
+                               Quản Lý Danh Mục
                             </span>
                             <svg sidebar-toggle-item="" class="w-4 h-4 ml-auto text-gray-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd">
@@ -111,55 +98,136 @@
                         </button>
                         <ul id="dropdown-ecommerce" sidebar-toggle-list="" class="pb-2 pt-1 hidden">
                             <li>
-                                <a href="{{route('admin.category',$model_type = 'product')}}" class="text-sm text-dark-500 font-normal rounded-lg flex items-center p-2 group  hover:bg-gray-200 transition duration-75 pl-11">
-                                    <span >Category Products</span>
+                                <a href="{{route('admin.category',$model_type = 'product')}}" class="text-sm  text-white hover:text-blue-600 font-medium rounded-lg flex items-center p-2 group  hover:bg-gray-200 transition duration-75 pl-11">
+                                    <div class="bg-white w-8 h-8  mr-1 rounded-lg text-center grid place-items-center">
+                                        <i class="fa-regular fa-newspaper"></i>
+                                    </div>
+                                    <span  >
+                                        Danh Mục Sản Phẩm
+                                    </span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{route('admin.category',$model_type = 'post')}}" class="text-sm text-dark-700 font-normal rounded-lg flex items-center p-2 group   hover:bg-gray-200 transition duration-75 pl-11">
-                                    <span>  Category Post</span>
+                                <a href="{{route('admin.category',$model_type = 'post')}}" class="text-sm text-white hover:text-blue-600 font-medium rounded-lg flex items-center p-2 group   hover:bg-gray-200 transition duration-75 pl-11">
+                                    <span class="" >
+                                        Danh Mục Bài Viết
+                                    </span>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <button type="button" class="w-full flex items-center py-2.5 px-4 text-base font-normal text-dark-500 rounded-lg hover:bg-gray-200  group transition-all duration-200" sidebar-toggle-collapse="" aria-controls="dropdown-users" data-collapse-toggle="dropdown-users">
-                            <div class="bg-white shadow-lg shadow-gray-300  text-dark-700 w-8 h-8 p-2.5 mr-1 rounded-lg text-center grid place-items-center">
-                                <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                    <title>office</title>
+                        <a href="{{route('admin.product')}}" class="flex items-center py-2.5 px-4 text-base font-bold text-white hover:text-blue-600 rounded-lg  hover:bg-gray-200 group transition-all duration-200" sidebar-toggle-collapse="">
+                            <div class="bg-white text-dark-700 w-8 h-8  mr-1 rounded-lg text-center grid place-items-center">
+                                <i class="fa-brands fa-linux text-[20px]"></i>
+                            </div>
+                            <span class="ml-3 text-black-50 text-sm" sidebar-toggle-item="">
+                                Quản Lý Sản Phẩm
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <button type="button" class="w-full flex items-center py-2.5 px-4 text-base font-normal  text-white hover:text-blue-600 rounded-lg hover:bg-gray-200  group transition-all duration-200" sidebar-toggle-collapse="" aria-controls="dropdown-image" data-collapse-toggle="dropdown-image" aria-expanded="true">
+                            <div class="bg-white  text-dark-700 w-8 h-8  mr-1 rounded-lg text-center grid place-items-center">
+                                <i class="fa-regular fa-images"></i>
+                            </div>
+                            <span class="ml-3 text-sm font-bold" sidebar-toggle-item="">
+                                Quản Lý Ảnh
+                            </span>
+                            <svg sidebar-toggle-item="" class="w-4 h-4 ml-auto text-gray-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd">
+                                </path>
+                            </svg>
+                        </button>
+                        <ul id="dropdown-image" sidebar-toggle-list="" class="pb-2 pt-1 hidden">
+                            <li>
+                                <a href="{{route('admin.image',$type = 'product')}}" class="text-sm  text-white hover:text-blue-600 font-medium rounded-lg flex items-center p-2 group  hover:bg-gray-200 transition duration-75 pl-11">
+                                    <span > Ảnh Sản Phẩm</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('admin.image',$type = 'post')}}" class="text-sm font-medium  text-white hover:text-blue-600 rounded-lg flex items-center p-2 group   hover:bg-gray-200 transition duration-75 pl-11">
+                                    <span>
+                                        Ảnh Bài Viết
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{{route('admin.order')}}" class="flex items-center py-2.5 px-4 text-base font-normal text-white hover:text-blue-600 rounded-lg  hover:bg-gray-200 group transition-all duration-200" sidebar-toggle-collapse="">
+                            <div class="bg-white text-dark-700 w-8 h-8  mr-1 rounded-lg text-center grid place-items-center">
+                                <i class="fa-solid fa-note-sticky"></i>
+                            </div>
+                            <span class="ml-3 font-bold text-sm" sidebar-toggle-item="">
+                                Quản Lý Đơn Hàng
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center py-2.5 px-4 text-base font-normal text-white hover:text-blue-600 rounded-lg  hover:bg-gray-200 group transition-all duration-200" sidebar-toggle-collapse="">
+                            <div class="bg-white  text-dark-700 w-8 h-8 p-2.5 mr-1 rounded-lg text-center grid place-items-center">
+                                <svg width="15px" height="15px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <title>credit-card</title>
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <g transform="translate(-1869.000000, -293.000000)" fill="currentColor" fill-rule="nonzero">
+                                        <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
                                             <g transform="translate(1716.000000, 291.000000)">
-                                                <g id="office" transform="translate(153.000000, 2.000000)">
-                                                    <path class="color-background" d="M12.25,17.5 L8.75,17.5 L8.75,1.75 C8.75,0.78225 9.53225,0 10.5,0 L31.5,0 C32.46775,0 33.25,0.78225 33.25,1.75 L33.25,12.25 L29.75,12.25 L29.75,3.5 L12.25,3.5 L12.25,17.5 Z" opacity="0.6"></path>
-                                                    <path class="color-background" d="M40.25,14 L24.5,14 C23.53225,14 22.75,14.78225 22.75,15.75 L22.75,38.5 L19.25,38.5 L19.25,22.75 C19.25,21.78225 18.46775,21 17.5,21 L1.75,21 C0.78225,21 0,21.78225 0,22.75 L0,40.25 C0,41.21775 0.78225,42 1.75,42 L40.25,42 C41.21775,42 42,41.21775 42,40.25 L42,15.75 C42,14.78225 41.21775,14 40.25,14 Z M12.25,36.75 L7,36.75 L7,33.25 L12.25,33.25 L12.25,36.75 Z M12.25,29.75 L7,29.75 L7,26.25 L12.25,26.25 L12.25,29.75 Z M35,36.75 L29.75,36.75 L29.75,33.25 L35,33.25 L35,36.75 Z M35,29.75 L29.75,29.75 L29.75,26.25 L35,26.25 L35,29.75 Z M35,22.75 L29.75,22.75 L29.75,19.25 L35,19.25 L35,22.75 Z"></path>
+                                                <g transform="translate(453.000000, 454.000000)">
+                                                    <path class="fill-slate-800 opacity-60" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"></path>
+                                                    <path class="fill-slate-800" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
                                                 </g>
                                             </g>
                                         </g>
                                     </g>
                                 </svg>
                             </div>
-                            <span class="ml-3 text-dark-500 text-sm font-light" sidebar-toggle-item="">Users</span>
-                            <svg sidebar-toggle-item="" class="w-4 h-4 ml-auto text-gray-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            <span class="ml-3 font-bold text-sm" sidebar-toggle-item="">
+                                Quản Lý Thanh Toán
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('admin.shop')}}" class="flex items-center py-2 px-4 text-base font-normal text-white hover:text-blue-600 text-dark-500 rounded-lg  hover:bg-gray-200 group transition-all duration-200" sidebar-toggle-collapse="">
+                            <div class="bg-white text-dark-700 w-8 h-8  mr-1 rounded-lg text-center grid place-items-center">
+                                <i class="fa-solid fa-shop"></i>
+                            </div>
+                            <span class="ml-3 font-bold text-sm" sidebar-toggle-item="">
+                                Hệ Thống Cửa Hàng
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center py-2 px-4 text-base font-normal text-white hover:text-blue-600 rounded-lg  hover:bg-gray-200 group transition-all duration-200" sidebar-toggle-collapse="">
+                            <div class="bg-white  text-dark-700 w-8 h-8  mr-1 rounded-lg text-center grid place-items-center">
+                                <i class="fa-solid fa-inbox"></i>
+                            </div>
+                            <span class="ml-3 font-bold text-sm" sidebar-toggle-item="">
+                                Yêu Cầu Khách Hàng
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <button type="button" class="w-full flex items-center py-2.5 px-4 text-base font-normal text-white hover:text-blue-600 rounded-lg hover:bg-gray-200  group transition-all duration-200" sidebar-toggle-collapse="" aria-controls="dropdown-setup" data-collapse-toggle="dropdown-setup" aria-expanded="true">
+                            <div class="bg-white   text-dark-700 w-8 h-8  mr-1 rounded-lg text-center grid place-items-center">
+                                <i class="fa-solid fa-gear"></i>
+                            </div>
+                            <span class="ml-3 font-bold text-sm" sidebar-toggle-item="">
+                                Cài  Đặt
+                            </span>
+                            <svg sidebar-toggle-item="" class="w-4 h-4 ml-auto text-gray-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd">
+                                </path>
                             </svg>
                         </button>
-                        <ul id="dropdown-users" sidebar-toggle-list="" class="pb-2 pt-1 hidden ">
+                        <ul id="dropdown-setup" sidebar-toggle-list="" class="pb-2 pt-1 hidden">
                             <li>
-                                <a href="#" class="text-sm text-dark-500 font-light rounded-lg flex items-center p-2 group  hover:bg-gray-200 transition duration-75 pl-11">
-                                    <span>Users list</span>
-                                    <span class="hidden">U</span>
+                                <a href="#" class="text-sm font-medium text-white hover:text-blue-600 rounded-lg flex items-center p-2 group  hover:bg-gray-200 transition duration-75 pl-11">
+                                    <span > Cấu Hình Thông Tin Web</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://demos.creative-tim.com/soft-ui-flowbite-pro/users/profile/" class="text-sm text-dark-500 font-light rounded-lg flex items-center p-2 group   hover:bg-gray-200 transition duration-75 pl-11">
-                                    <span>Profile</span>
-                                    <span class="hidden">P</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://demos.creative-tim.com/soft-ui-flowbite-pro/users/settings/" class="text-sm text-dark-500 font-light rounded-lg flex items-center p-2 group   hover:bg-gray-200 transition duration-75 pl-11">
-                                    <span>Settings</span>
-                                    <span class="hidden">S</span>
+                                <a href="#" class="text-sm font-medium text-white hover:text-blue-600 rounded-lg flex items-center p-2 group   hover:bg-gray-200 transition duration-75 pl-11">
+                                    <span>  Banner Web</span>
                                 </a>
                             </li>
                         </ul>
@@ -168,85 +236,7 @@
                 <hr class="border-0 h-px bg-gradient-to-r from-gray-100 via-gray-300 to-gray-100">
             </div>
         </div>
-        <div class="hidden relative bottom-0 left-0 justify-center p-4 space-x-4 w-full lg:flex bg-gray-100" sidebar-bottom-menu="">
-            <a href="#" class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-dark-500 hover:bg-gray-200">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"></path></svg>
-            </a>
-            <a href="#" data-tooltip-target="tooltip-settings" class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-dark-500 hover:bg-gray-200">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path></svg>
-            </a>
-            <div id="tooltip-settings" role="tooltip" class="inline-block absolute z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg transition-opacity duration-300 tooltip shadow-lg-sm opacity-0 invisible" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(75.2px, -64px, 0px);" data-popper-placement="top">
-                Settings page
-                <div class="tooltip-arrow" data-popper-arrow="" style="position: absolute; left: 0px; transform: translate3d(51.2px, 0px, 0px);"></div>
-            </div>
-            <button type="button" data-dropdown-toggle="language-dropdown" class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-dark-500 hover:bg-gray-200">
-                <svg class="h-5 w-5 rounded-full mt-0.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 3900 3900"><path fill="#b22234" d="M0 0h7410v3900H0z"></path><path d="M0 450h7410m0 600H0m0 600h7410m0 600H0m0 600h7410m0 600H0" stroke="#fff" stroke-width="300"></path><path fill="#3c3b6e" d="M0 0h2964v2100H0z"></path><g fill="#fff"><g id="d"><g id="c"><g id="e"><g id="b"><path id="a" d="M247 90l70.534 217.082-184.66-134.164h228.253L176.466 307.082z"></path><use xlink:href="#a" y="420"></use><use xlink:href="#a" y="840"></use><use xlink:href="#a" y="1260"></use></g><use xlink:href="#a" y="1680"></use></g><use xlink:href="#b" x="247" y="210"></use></g><use xlink:href="#c" x="494"></use></g><use xlink:href="#d" x="988"></use><use xlink:href="#c" x="1976"></use><use xlink:href="#e" x="2470"></use></g></svg>
-            </button>
-            <div class="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg" id="language-dropdown" data-popper-placement="bottom" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(184px, 688.8px, 0px);">
-                <ul class="py-1" role="none">
-                    <li>
-                        <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-200" role="menuitem">
-                            <div class="inline-flex items-center">
-                                <svg class="h-3.5 w-3.5 rounded-full mr-2" xmlns="http://www.w3.org/2000/svg" id="flag-icon-css-us" viewBox="0 0 512 512">
-                                    <g fill-rule="evenodd">
-                                        <g stroke-width="1pt">
-                                            <path fill="#bd3d44" d="M0 0h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0z" transform="scale(3.9385)"></path>
-                                            <path fill="#fff" d="M0 10h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0z" transform="scale(3.9385)"></path>
-                                        </g>
-                                        <path fill="#192f5d" d="M0 0h98.8v70H0z" transform="scale(3.9385)"></path>
-                                        <path fill="#fff" d="M8.2 3l1 2.8H12L9.7 7.5l.9 2.7-2.4-1.7L6 10.2l.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7L74 8.5l-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 7.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm-74.1 7l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7H65zm16.4 0l1 2.8H86l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm-74 7l.8 2.8h3l-2.4 1.7.9 2.7-2.4-1.7L6 24.2l.9-2.7-2.4-1.7h3zm16.4 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 21.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm-74.1 7l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7H65zm16.4 0l1 2.8H86l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm-74 7l.8 2.8h3l-2.4 1.7.9 2.7-2.4-1.7L6 38.2l.9-2.7-2.4-1.7h3zm16.4 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 35.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm-74.1 7l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7H65zm16.4 0l1 2.8H86l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm-74 7l.8 2.8h3l-2.4 1.7.9 2.7-2.4-1.7L6 52.2l.9-2.7-2.4-1.7h3zm16.4 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 49.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm-74.1 7l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7H65zm16.4 0l1 2.8H86l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm-74 7l.8 2.8h3l-2.4 1.7.9 2.7-2.4-1.7L6 66.2l.9-2.7-2.4-1.7h3zm16.4 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 63.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9z" transform="scale(3.9385)"></path>
-                                    </g>
-                                </svg>
-                                English (US)
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-200" role="menuitem">
-                            <div class="inline-flex items-center">
-                                <svg class="h-3.5 w-3.5 rounded-full mr-2" xmlns="http://www.w3.org/2000/svg" id="flag-icon-css-de" viewBox="0 0 512 512">
-                                    <path fill="#ffce00" d="M0 341.3h512V512H0z"></path>
-                                    <path d="M0 0h512v170.7H0z"></path>
-                                    <path fill="#d00" d="M0 170.7h512v170.6H0z"></path>
-                                </svg>
-                                Deutsch
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-200" role="menuitem">
-                            <div class="inline-flex items-center">
-                                <svg class="h-3.5 w-3.5 rounded-full mr-2" xmlns="http://www.w3.org/2000/svg" id="flag-icon-css-it" viewBox="0 0 512 512">
-                                    <g fill-rule="evenodd" stroke-width="1pt">
-                                        <path fill="#fff" d="M0 0h512v512H0z"></path>
-                                        <path fill="#009246" d="M0 0h170.7v512H0z"></path>
-                                        <path fill="#ce2b37" d="M341.3 0H512v512H341.3z"></path>
-                                    </g>
-                                </svg>
-                                Italiano
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-200" role="menuitem">
-                            <div class="inline-flex items-center">
-                                <svg class="h-3.5 w-3.5 rounded-full mr-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="flag-icon-css-cn" viewBox="0 0 512 512">
-                                    <defs>
-                                        <path id="a" fill="#ffde00" d="M1-.3L-.7.8 0-1 .6.8-1-.3z"></path>
-                                    </defs>
-                                    <path fill="#de2910" d="M0 0h512v512H0z"></path>
-                                    <use width="30" height="20" transform="matrix(76.8 0 0 76.8 128 128)" xlink:href="#a"></use>
-                                    <use width="30" height="20" transform="rotate(-121 142.6 -47) scale(25.5827)" xlink:href="#a"></use>
-                                    <use width="30" height="20" transform="rotate(-98.1 198 -82) scale(25.6)" xlink:href="#a"></use>
-                                    <use width="30" height="20" transform="rotate(-74 272.4 -114) scale(25.6137)" xlink:href="#a"></use>
-                                    <use width="30" height="20" transform="matrix(16 -19.968 19.968 16 256 230.4)" xlink:href="#a"></use>
-                                </svg>
-                                中文 (繁體)
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+        <div class="hidden relative bottom-0 left-0 justify-center p-4 space-x-4 w-full lg:flex bg-green-500" sidebar-bottom-menu="">
         </div>
     </div>
 </aside>

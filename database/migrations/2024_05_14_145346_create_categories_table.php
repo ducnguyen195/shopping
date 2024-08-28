@@ -16,7 +16,7 @@ return new class extends Migration
             $table->bigInteger('parent_id')->default(0);
             $table->string('name',100);
             $table->string('slug',100);
-            $table->string('icon_path',100)->nullable();
+            $table->string('icon_path',100);
             $table->string('model_type',100);// App\Model\Product || App\Model\Post
             $table->timestamps();
         });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -42,7 +43,8 @@ class BrandController extends Controller
         return view('admin.content.brand.editBrand',['brand'=>$brand]);
     }
 
-    public function update(Request $request,$id) {
+    public function update(Request $request,$id): RedirectResponse
+    {
         $item = Brand::find($id);
         $input = $request->all();
         $this->fillDate($item,$input);
