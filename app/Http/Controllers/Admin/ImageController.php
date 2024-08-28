@@ -22,7 +22,16 @@ class ImageController extends Controller
         $item["name"] = $input["name"] ?? "";
         $item["model_type"] = $type ;
         $item["model_id"] = $input["model_id"] ?? null;
-        $item["path"] = isset($input["path"]) ? json_encode($input["path"]) : json_encode([]);
+        if( $input["path"]){
+            $images = $input['path'];
+            foreach ($images as $image) {
+                if ($image) {
+                    $imageDetail = $image;
+                    $arrImage[] =  $imageDetail;
+                    $item['path'] = json_encode($arrImage);
+                }
+            }
+        }
         $item["alt"] = $input["alt"] ?? '';
         $item->save();
     }
@@ -42,9 +51,13 @@ class ImageController extends Controller
         if ($type == 'product'){
             $item = Product::all();
         } else {
-            $item = Post::all();
+            $item = Post::orderBy('created_at','DESC')->get();
         }
-        return view('admin.content.image.addImage',['item' => $item ,'type' => $type]);
+        return view('admin.content.image.addImage',[
+            'item' => $item ,
+            'type' => $type,
+            'type_name' => $this->getImageName($type),
+        ]);
     }
 
     public  function store (Request $request,$type): RedirectResponse

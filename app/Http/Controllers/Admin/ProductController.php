@@ -31,7 +31,7 @@ class ProductController extends Controller
         $post["seo_keywords"] = $input["seo_keywords"] ?? '';
         $post["seo_description"] = $input["seo_description"] ?? '';
         if (true){
-            $post["rating_value"] = (integer)0;
+            $post["rating_value"] = 0;
             $post["rating_number"] = 0;
             $post["viewer"] = 0;
         }
@@ -43,7 +43,8 @@ class ProductController extends Controller
         $product["name"] = $input["name"];
         $product['barcode'] = $input['barcode'] ?? '';
         $product['category_id'] = $input['category_id'] ?? null;
-        $product['slug'] = $input['slug'] ?? Str::slug($input["name"]);
+
+        $product['slug'] = $input['slug'] ?? Str::slug($input['name'] .' '. $input['barcode'] );
         $product['description'] = $input['description'] ?? "";
         $product['quantity'] = $input['quantity'] ?? "";
         $product['price'] = str_replace('.','',$input['price']) ?? "";

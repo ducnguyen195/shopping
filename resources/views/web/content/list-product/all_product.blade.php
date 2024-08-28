@@ -1,11 +1,12 @@
-    @extends('layouts.shoppingLayoutWeb')
+@extends('layouts.shoppingLayoutWeb')
+    @section('title','Tất cả sản phẩm | Shoponline.th')
 @section('content')
-    <div class="w-full h-full">
+    <div class="w-full h-full  mb-24">
         <div style="background-image: url('{{asset('images/bg-breadcrumb.webp')}}')" class=" w-full h-[200px] bg-cover flex items-center justify-center">
             <div class=" block text-center">
                 <h2 class="font-bold text-2xl"> Tất cả sản phẩm</h2>
                 <span class="block mt-5 text-sm">
-                    <span> Trang chủ /  <strong>  Tất cả sản phẩm </strong> </span>
+                    <span> <a href="{{route('shop.index')}}" class="hover:text-amber-400"> Trang chủ </a> /  <strong>  Tất cả sản phẩm </strong> </span>
                 </span>
             </div>
         </div>
@@ -47,10 +48,10 @@
                             <i  class="fa-solid fa-plus absolute right-0 top-2 cursor-pointer "></i>
                         </div>
                         <div id="menu-price-body" class="hidden mt-4 group/edit" >
-                            <ul class=" transition-all ease-in-out pb-2">
+                            <ul class=" transition-all ease-in-out pb-2 text-[15px]">
                                 <a href="{{route('shop.list_product',[...$query, 'min_price' => 0, 'max_price' => '100000' ])}}">
-                                    <li class="flex items-center ">
-                                        <label for="" class="cursor-pointer hover:text-amber-400">
+                                    <li class="flex items-center">
+                                        <label for="" class="cursor-pointer hover:text-amber-400 flex items-center">
                                             <input type="checkbox" id="filter_price-1" class="border rounded outline-none focus:ring-0  mr-2" value="(<100000)"  @if (isset($query['max_price']))
                                                    @if($query['max_price'] == 100000) checked @endif
                                                 @endif>
@@ -60,7 +61,7 @@
                                 </a>
                                 <a href="{{route('shop.list_product',[...$query,'min_price' => '100000' , 'max_price' => '200000' ])}}">
                                     <li class="flex items-center mt-3">
-                                        <label for="" class="cursor-pointer hover:text-amber-400" >
+                                        <label for="" class="cursor-pointer hover:text-amber-400 flex items-center" >
                                             <input type="checkbox"  id="filter_price-2" class="border rounded outline-none focus:ring-0  mr-2" value="(<100000)"  @if (isset($query['max_price']))
                                                     @if ($query['max_price'] == 200000)
                                                         checked
@@ -72,7 +73,7 @@
                                 </a>
                                 <a href="{{route('shop.list_product',[...$query,'min_price' => '200000' , 'max_price' => '300000' ])}}">
                                     <li class="flex items-center mt-3">
-                                        <label for="" class="cursor-pointer hover:text-amber-400" >
+                                        <label for="" class="cursor-pointer hover:text-amber-400 flex items-center" >
                                             <input type="checkbox"  id="filter_price-2" class="border rounded outline-none focus:ring-0  mr-2" value="(<100000)"  @if (isset($query['max_price']))
                                                 @if ($query['max_price'] == 300000)
                                                     checked
@@ -84,7 +85,7 @@
                                 </a>
                                 <a href="{{route('shop.list_product',[...$query,'min_price' => '500000' , 'max_price' => '500000' ])}}">
                                     <li class="flex items-center mt-3">
-                                        <label for="" class="cursor-pointer hover:text-amber-400" >
+                                        <label for="" class="cursor-pointer hover:text-amber-400 flex items-center" >
                                             <input type="checkbox"  id="filter_price-2" class="border rounded outline-none focus:ring-0  mr-2" value=""  @if (isset($query['max_price']))
                                                 @if ($query['max_price'] == 500000)
                                                     checked
@@ -96,7 +97,7 @@
                                 </a>
                                 <a href="{{route('shop.list_product',[...$query,'min_price' => '500000' , 'max_price' => '1000000' ])}}">
                                     <li class="flex items-center mt-3">
-                                        <label for="" class="cursor-pointer hover:text-amber-400" >
+                                        <label for="" class="cursor-pointer hover:text-amber-400 flex items-center" >
                                             <input type="checkbox"  id="filter_price-2" class="border rounded outline-none focus:ring-0  mr-2" value=""  @if (isset($query['max_price']))
                                                 @if ($query['max_price'] == 1000000)
                                                     checked
@@ -108,7 +109,7 @@
                                 </a>
                                 <a href="{{route('shop.list_product',[...$query,'min_price' => '1000000' , 'max_price' => '2000000' ])}}">
                                     <li class="flex items-center mt-3">
-                                        <label for="" class="cursor-pointer hover:text-amber-400" >
+                                        <label for="" class="cursor-pointer hover:text-amber-400 flex items-center" >
                                             <input type="checkbox"  id="filter_price-2" class="border rounded outline-none focus:ring-0  mr-2" value=""  @if (isset($query['max_price']))
                                                     @if ($query['max_price'] == 2000000)
                                                         checked
@@ -120,7 +121,7 @@
                                 </a>
                                 <a href="{{route('shop.list_product',[...$query,'min_price' => '2000000' , 'max_price' => '3000000' ])}}">
                                     <li class="flex items-center mt-3">
-                                        <label for="" class="cursor-pointer hover:text-amber-400" >
+                                        <label for="" class="cursor-pointer hover:text-amber-400 flex items-center" >
                                             <input type="checkbox"  id="filter_price-2" class="border rounded outline-none focus:ring-0  mr-2" value=""  @if (isset($query['max_price']))
                                                 @if ($query['max_price'] == 3000000)
                                                     checked
@@ -132,7 +133,7 @@
                                 </a>
                                 <a href="{{route('shop.list_product',[...$query,'min_price' => '3000000' , 'max_price' => '100000000' ])}}">
                                     <li class="flex items-center mt-3">
-                                        <label for="" class="cursor-pointer hover:text-amber-400" >
+                                        <label for="" class="cursor-pointer hover:text-amber-400 flex items-center" >
                                             <input type="checkbox"  id="filter_price-2" class="border rounded outline-none focus:ring-0  mr-2" value=""  @if (isset($query['max_price']))
                                                 @if ($query['max_price'] == 100000000)
                                                     checked
@@ -149,34 +150,34 @@
             </div>
         {{--    Block 2--}}
             <div class="col-span-3  w-full ">
-               <div class="flex border-b ">
+               <div class="flex border-b items-center pb-2 ">
                    <div >
-                       <h3 class=" font-bold inline-block whitespace-nowrap">
+                       <h3 class=" font-bold  whitespace-nowrap flex items-center gap-1">
                            <i class="fa-solid fa-arrow-down-a-z text-lg"></i> Xếp theo
                        </h3>
                    </div>
                    <div class="flex w-full ml-3" >
-                       <ul class=" flex w-full">
-                           <li>
-                               <a href="{{route('shop.list_product', [ ...$query,'name' => 'ASC'])}}" class="font-bold ">
+                       <ul class=" flex w-full text-sm">
+                           <li >
+                               <a href="{{route('shop.list_product', [ ...$query,'name' => 'ASC'])}}" class="font-bold  flex gap-2 items-center">
                                    <input type="radio" id="sort_AZ" name="soft" title="Tên A-Z">
                                    <label for="sort_AZ"> Tên A-Z </label>
                                </a>
                            </li>
                            <li class="ml-3">
-                               <a href="{{route('shop.list_product', [ ...$query,'name' => 'DESC'])}}" class=" focus:sort font-bold">
+                               <a href="{{route('shop.list_product', [ ...$query,'name' => 'DESC'])}}" class="  flex gap-2 items-center focus:sort font-bold">
                                    <input type="radio" name="soft" id="sort_ZA" title="Tên Z-A">
                                    <label for="sort_ZA"> Tên Z-A</label>
                                </a>
                            </li>
                            <li  class="ml-3">
-                               <a href="{{route('shop.list_product', [ ...$query,'price' => 'ASC'])}}" class=" font-bold">
+                               <a href="{{route('shop.list_product', [ ...$query,'price' => 'ASC'])}}" class=" flex gap-2 items-center font-bold">
                                    <input type="radio" id="price_dow"  name="soft" title="Giá thấp đến cao">
                                    <label for="price_dow"> Giá thấp đến cao</label>
                                </a>
                            </li>
                            <li  class="ml-3">
-                               <a href="{{route('shop.list_product', [ ...$query,'price' => 'DESC'])}}" class=" font-bold">
+                               <a href="{{route('shop.list_product', [ ...$query,'price' => 'DESC'])}}" class=" flex gap-2 items-center font-bold">
                                    <input type="radio" name="soft" id="price_up" title="Giá cao đến thấp">
                                    <label for="price_up"> Giá cao đến thấp </label>
                                </a>
@@ -204,17 +205,38 @@
                                     </a>
                                     <div class=" absolute -bottom-10 left-12  transition-all ease-in duration-200  group-hover/item:bottom-2
                                         group-hover/item:opacity-100 group-hover/item:translate-y-0  flex justify-center ml-4 gap-2">
-                                        <button class="rounded-full bg-[#fe0000] w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích"> <i class="fa-regular fa-heart"></i></button>
-                                        <a href="{{route('shop.add_product',[$product->id])}}"><button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"> <i class="fa-solid fa-cart-shopping"></i> </button>
-                                        </a>
+                                        <button class="rounded-full bg-[#fe0000] w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào yêu thích">
+                                            <i class="fa-regular fa-heart"></i>
+                                        </button>
+                                        @guest
+                                            <a href="{{route('shop.login_form')}}">
+                                                <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"
+                                                        onclick="">
+                                                    <i class="fa-solid fa-cart-shopping"></i>
+                                                </button>
+                                            </a>
+                                        @else
+                                            <button class="rounded-full bg-green-500 w-10 h-10 text-white text-lg hover:bg-amber-400" title="Thêm vào giỏ hàng"
+                                                    onclick="handleAddProduct({{$product->id}})">
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </button>
+                                        @endguest
                                     </div>
+                                    @if($product->discount_persent)
+                                        <div class="absolute top-0 left-0 bg-red-600 rounded-tl-lg rounded-br-lg font-normal px-2  ">
+                                            <span class="text-white text-sm line-clamp-1"> -{{ $product->discount_persent}}% </span>
+                                        </div>
+                                    @endif
                                 </div>
                                 <div class=" z-30 bg-white group/item my-2 rounded-b-lg ">
                                     <a href="{{route('shop.product_detail',[$product->slug ])}}" class="flex justify-center  ">
                                         <p class="whitespace-nowrap overflow-hidden text-center text-ellipsis text-[15px] font-normal w-44 " title="{{$product->name}}" > {{$product->name}} </p>
                                     </a>
-                                    <div class="flex gap-4 justify-center">
-                                        <span class="text-red-500 font-bold"> {{number_format($product->price,0,'.','.')}}đ </span>
+                                    <div class="flex gap-4 justify-center items-center text-[15px]">
+                                        <span class="text-red-500 font-bold"> {{ number_format($product->price*(1-$product->discount_persent*0.01), 0, ',', '.') }}₫ </span>
+                                        @if($product->discount_persent)
+                                            <span class="text-gray-400 text-sm line-through"> {{number_format($product->price,0,',','.')}}₫ </span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

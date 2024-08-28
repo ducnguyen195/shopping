@@ -28,17 +28,15 @@ class PostController extends Controller
         $item['rating_number'] = 0;
         $item['viewer'] = 0;
         $item->save();
-
     }
     public function index(): View|Application|Factory
     {
         $posts = Post::whereHas('category', function ($query){
             $query->where('model_type', '=', 'post');
-         })->get();
+         })->paginate(10);
         return view('admin.content.post.index',[
             "post" =>$posts
         ]);
-
     }
 
     public function add(): View|Application|Factory

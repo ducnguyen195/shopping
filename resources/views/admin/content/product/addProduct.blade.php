@@ -12,7 +12,7 @@
                                         <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
                                         </path>
                                     </svg>
-                                    Home
+                                    Trang chủ
                                 </a>
                             </li>
                             <li>
@@ -21,12 +21,14 @@
                                         <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd">
                                         </path>
                                     </svg>
-                                    <span class="ml-1 text-sm font-medium text-gray-400 md:ml-2" aria-current="page">Product</span>
+                                    <span class="ml-1 text-sm font-medium text-gray-400 md:ml-2" aria-current="page">
+                                        Sản phẩm
+                                    </span>
                                 </div>
                             </li>
                         </ol>
                     </nav>
-                    <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl">Add New Product</h1>
+                    <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl"> Thêm sản phẩm </h1>
                 </div>
             </div>
         </div>
@@ -35,7 +37,7 @@
                 @csrf
                 <div class="grid grid-cols-2 border gap-6 p-3 rounded-2xl font-normal">
                     <div class="col-span-1">
-                        <label for="category_id" class="block "> Category Product  </label>
+                        <label for="category_id" class="block "> Danh Mục Sản Phẩm <span class="text-red-600 text-xl"> * </span> </label>
                         <select name="category_id" id="category_id" class="rounded-lg w-full mt-3">
                             <option value="0"> Select Category </option>
                             @foreach($categories as  $item)
@@ -49,7 +51,7 @@
                         </select>
                     </div>
                     <div class="col-span-1">
-                        <label for="post_category_id" class="block "> Category Post  </label>
+                        <label for="post_category_id" class="block "> Danh Mục Bài Viết  <span class="text-red-600 text-xl"> * </span>  </label>
                         <select name="post_category_id" id="post_category_id" class="rounded-lg w-full mt-3">
                             <option value="0"> Select Category </option>
                             @foreach($cate_post as  $item)
@@ -59,52 +61,52 @@
                     </div>
                 </div>
                 <div class=" border mt-5 rounded-2xl">
-                    <h3 class="mt-3 p-3 text-2xl"> Product Imformation </h3>
+                    <h3 class="mt-3 p-3 text-2xl"> Thông Tin Sản Phẩm </h3>
                    <div class="grid grid-cols-2 p-3 gap-10">
                        <div class="col-span-1">
                            <div class="mt-5">
-                               <label for="post_name" class="block"> Name</label>
+                               <label for="post_name" class="block"> Tên Sản Phẩm  <span class="text-red-600 text-xl"> * </span> </label>
                                <input type="text" id="post_name" name="name" class="rounded-lg w-full mt-2" placeholder="Enter Product Name">
                            </div>
                            <div class="mt-5">
-                               <label for="post_slug"> Slug</label>
+                               <label for="post_slug"> Slug Sản Phẩm </label>
                                <input type="text" id="post_slug" name="slug" class="rounded-lg w-full mt-2" placeholder="Enter Product Slug">
                            </div>
                            <div class="mt-5">
-                               <label for="product_code"> Product Code</label>
+                               <label for="product_code"> Mã Sản Phẩm </label>
                                <input type="text" id="product_code" name="barcode" class="rounded-lg w-full mt-2" placeholder="Enter Product Code">
                            </div>
                            <div class="mt-5">
-                               <label for="post_description" class="block mb-2" > Description</label>
+                               <label for="post_description" class="block mb-2" > Mô Tả Ngắn </label>
                                <textarea type="text" id="post_description" name="description" class="rounded-lg w-full" placeholder="Enter Product Description"> </textarea>
                            </div>
                        </div>
                        <div class="col-span-1">
                            <div class="mt-5">
-                               <label for="post_name" class="block"> Quantity</label>
+                               <label for="post_name" class="block"> Số Lượng  <span class="text-red-600 text-xl"> * </span> </label>
                                <input type="text" id="post_name" name="quantity" class="rounded-lg w-full mt-2" placeholder="Enter Product Quantity">
                            </div>
                            <div class="mt-5">
-                               <label for="price"> Price</label>
+                               <label for="price" class="block "> Giá   <span class="text-red-600 text-xl"> * </span> </label>
                                <input type="text" id="price" name="price" class="rounded-lg w-full mt-2" placeholder="Enter Product Price">
                            </div>
                            <div class="mt-5">
-                               <label for="post_slug"> Discount</label>
+                               <label for="post_slug"> Chiết Khấu </label>
                                <input type="text" id="post_slug" name="discount_persent" class="rounded-lg w-full mt-2" placeholder="Enter Discount Persent">
                            </div>
                            <div class="mt-5">
-                               <label for="product_code"> Brand Name </label>
+                               <label for="product_code" class="block  items-center"> Thương Hiệu  <span class="text-red-600 text-xl"> * </span> </label>
                                <select name="brand_id" id="product_code" class="rounded-lg w-full mt-2" >
-                                   <option value="0"> No Brand</option>
+                                   <option value="0"> Chọn thương hiệu </option>
                                    @foreach($brand as $item)
                                        <option value="{{$item->id}}"> {{$item->name}}</option>
                                    @endforeach
                                </select>
                            </div>
                            <div class="mt-5">
-                               <label for="product_post" class="block mb-2" > Post Name</label>
+                               <label for="product_post" class="block mb-2" > Bài Viết </label>
                                <select name="post_id" id="product_post" class="rounded-lg w-full mt-2" >
-                                   <option value="0"> No Post</option>
+                                   <option value="0"> Chọn bài viết </option>
                                    @foreach($posts as $item)
                                        <option value="{{$item->id}}"> {{$item->name}}</option>
                                    @endforeach
@@ -116,42 +118,42 @@
                 <div class="grid grid-cols-2 p-3 gap-x-6 border mt-5 rounded-2xl">
                     <div class="col-span-1">
                         <div class="mt-5">
-                            <label for="post_name" class="block"> Post Name</label>
+                            <label for="post_name" class="block"> Tên Bài Viết </label>
                             <input type="text" id="post_name" name="post_name" class="rounded-lg w-full mt-2" placeholder="Enter Post Name">
                         </div>
                         <div class="mt-5">
-                            <label for="post_slug"> Post Slug</label>
+                            <label for="post_slug"> Slug Bài Viết</label>
                             <input type="text" id="post_slug" name="post_slug" class="rounded-lg w-full mt-2" placeholder="Enter Post Slug">
                         </div>
                         <div class="mt-5">
-                            <label for="post_description" class="block mb-2" > Post Description</label>
+                            <label for="post_description" class="block mb-2" > Mô Tả Ngắn Bài Viết </label>
                             <textarea type="text" id="post_description" name="post_description" class="rounded-lg w-full" placeholder="Enter Post Description"> </textarea>
                         </div>
                     </div>
                     <div class="col-span-1">
                         <div class="mt-5">
-                            <label for="post_seo_title" class="block"> SEO Title</label>
+                            <label for="post_seo_title" class="block"> Tiêu Đề SEO </label>
                             <input type="text" id="post_seo_title" name="seo_title" class="rounded-lg w-full mt-2" placeholder="Enter Seo Title">
                         </div>
                         <div class="mt-5">
-                            <label for="post_seo_keyword" class="block"> SEO Keyword</label>
+                            <label for="post_seo_keyword" class="block"> Từ Khóa SEO </label>
                             <input type="text" id="post_seo_keyword" name="seo_keywords" class="rounded-lg w-full mt-2" placeholder="Enter Seo Keyword">
                         </div>
                         <div class="mt-5">
-                            <label for="post_seo_description" class="block mb-2"> SEO Description</label>
+                            <label for="post_seo_description" class="block mb-2"> Mô Tả Ngắn SEO </label>
                             <textarea type="text" id="post_seo_description" name="seo_description" class="rounded-lg w-full "  placeholder="Enter Seo Description"> </textarea>
                         </div>
                     </div>
                 </div>
                 <div class="mt-5 ">
                     <div class="p-3 border rounded-2xl ">
-                        <label for="post_content" class="block mb-2"> Post Content</label>
+                        <label for="post_content" class="block mb-2"> Nội Dung Bài Viết</label>
                         <textarea name="post_content" id="post_content" class="w-full rounded-lg"> </textarea>
                     </div>
                 </div>
                 <div class=" mt-5 p-6 pl-0 rounded-b border-gray-200">
                     <button class="text-white font-medium text-sm px-5 py-2.5 text-center rounded-lg bg-gradient-to-br from-pink-500 to-violet-500 shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform" type="submit">
-                        Add Product
+                        Thêm Sản Phẩm
                     </button>
                 </div>
             </form>

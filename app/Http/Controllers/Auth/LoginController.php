@@ -47,9 +47,18 @@ class LoginController extends Controller
 
     public function loginForm(): View|Application|Factory
     {
+        if ( Auth::user()) {
+            $userID =  Auth::user()->id;
+            $cartTotalQuantity = \Cart::session($userID)->getTotalQuantity();
+        }else{
+            $cartTotalQuantity = 0;
+        }
         $categories = Category::where('model_type','=','product')->where('parent_id','=',0)->with('children')->get();
 
-        return view('web.content.signup-in.signin',['categories' => $categories]);
+        return view('web.content.signup-in.signin',[
+            'categories' => $categories,
+            'cartQuantity'=> $cartTotalQuantity,
+            ]);
     }
 
     public function login(Request $request): RedirectResponse

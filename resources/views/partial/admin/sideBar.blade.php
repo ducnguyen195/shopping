@@ -117,6 +117,16 @@
                         </ul>
                     </li>
                     <li>
+                        <a href="{{route('admin.product')}}" class="flex items-center py-2.5 px-4 text-base font-bold text-white hover:text-blue-600 rounded-lg  hover:bg-gray-200 group transition-all duration-200" sidebar-toggle-collapse="">
+                            <div class="bg-white text-dark-700 w-8 h-8  mr-1 rounded-lg text-center grid place-items-center">
+                                <i class="fa-brands fa-linux text-[20px]"></i>
+                            </div>
+                            <span class="ml-3 text-black-50 text-sm" sidebar-toggle-item="">
+                                Quản Lý Sản Phẩm
+                            </span>
+                        </a>
+                    </li>
+                    <li>
                         <button type="button" class="w-full flex items-center py-2.5 px-4 text-base font-normal  text-white hover:text-blue-600 rounded-lg hover:bg-gray-200  group transition-all duration-200" sidebar-toggle-collapse="" aria-controls="dropdown-image" data-collapse-toggle="dropdown-image" aria-expanded="true">
                             <div class="bg-white  text-dark-700 w-8 h-8  mr-1 rounded-lg text-center grid place-items-center">
                                 <i class="fa-regular fa-images"></i>
@@ -143,17 +153,6 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
-
-                    <li>
-                        <a href="{{route('admin.product')}}" class="flex items-center py-2.5 px-4 text-base font-bold text-white hover:text-blue-600 rounded-lg  hover:bg-gray-200 group transition-all duration-200" sidebar-toggle-collapse="">
-                            <div class="bg-white text-dark-700 w-8 h-8  mr-1 rounded-lg text-center grid place-items-center">
-                                <i class="fa-brands fa-linux text-[20px]"></i>
-                            </div>
-                            <span class="ml-3 text-black-50 text-sm" sidebar-toggle-item="">
-                                Quản Lý Sản Phẩm
-                            </span>
-                        </a>
                     </li>
                     <li>
                         <a href="{{route('admin.order')}}" class="flex items-center py-2.5 px-4 text-base font-normal text-white hover:text-blue-600 rounded-lg  hover:bg-gray-200 group transition-all duration-200" sidebar-toggle-collapse="">

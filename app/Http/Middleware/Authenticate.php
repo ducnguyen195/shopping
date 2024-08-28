@@ -21,12 +21,12 @@ class Authenticate extends Middleware
 
         if (str_starts_with($currentUrl, route('admin.login.form'))) {
             return route('admin.login.form');
-        } elseif (str_starts_with($currentUrl, route('shop.account'))) {
-            return route('shop.account');
+        } elseif (str_starts_with($currentUrl, route('shop.login_form'))) {
+            return route('shop.login_form');
         }
 
         // Mặc định về user
-        return route('shop.account');
+        return route('shop.login_form');
     }
 
 }

@@ -114,25 +114,21 @@
                                            <div class=" flex gap-1">
                                                @foreach ( $item->images as $image )
                                                    @php  $image_path = json_decode($image->path )  @endphp
-                                                   @if($image_path)
-                                                       @foreach($image_path as $img)
-                                                           <img src="{{$img}}" alt="{{$img}}" class=" max-w-14 h-12  bg-center ">
-                                                       @endforeach
+                                                   @if(isset($image_path))
+                                                           <img src="{{asset($image_path[0])}}" alt="" class=" max-w-14 h-12  bg-center ">
                                                    @endif
                                                @endforeach
                                            </div>
                                     </td>
                                     <td class="p-4 space-x-2 whitespace-nowrap lg:p-5">
                                         <a href="{{route('admin.edit_product',[$item->id])}}">
-                                            <button type="button" data-modal-target="edit-brand-modal" data-modal-toggle="edit-brand-modal" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 hover:text-gray-900 hover:scale-[1.02] transition-all">
-                                                <svg class="mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
-                                                Edit
+                                            <button type="button" title="Sửa" data-modal-target="edit-brand-modal" data-modal-toggle="edit-brand-modal" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 hover:text-gray-900 hover:scale-[1.02] transition-all">
+                                                <svg class=" w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
                                             </button>
                                         </a>
                                         <a href="#">
-                                            <button type="button" data-modal-target="delete-brand-modal-{{$item->id}}" data-modal-toggle="delete-brand-modal-{{$item->id}}" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-gradient-to-br from-red-500 to-red-600 rounded-lg shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform">
-                                                <svg class="mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
-                                                Delete
+                                            <button type="button" title="Xóa" data-modal-target="delete-brand-modal-{{$item->id}}" data-modal-toggle="delete-brand-modal-{{$item->id}}" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-gradient-to-br from-red-500 to-red-600 rounded-lg shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform">
+                                                <svg class=" w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
                                             </button>
                                         </a>
                                     </td>
@@ -154,12 +150,12 @@
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
                                                     </path>
                                                 </svg>
-                                                <h3 class="mt-5 mb-6 text-xl font-normal text-gray-500">Are you sure you want to delete this brand ?</h3>
+                                                <h3 class="mt-5 mb-6 text-xl font-normal text-gray-500">Bạn có chắc muốn xóa không ?</h3>
                                                 <a href="{{route('admin.destroy_product',[$item->id])}}" class="text-white bg-gradient-to-br from-red-400 to-red-600 font-medium rounded-lg text-base inline-flex items-center px-3 py-2.5 text-center mr-2 shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform">
-                                                    Yes, I'm sure
+                                                    Có
                                                 </a>
                                                 <a href="#" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 font-medium inline-flex items-center rounded-lg text-base px-3 py-2.5 text-center hover:scale-[1.02] transition-transform" data-modal-toggle="delete-brand-modal-{{$item->id}}">
-                                                    No, cancel
+                                                    Không
                                                 </a>
                                             </div>
                                         </div>

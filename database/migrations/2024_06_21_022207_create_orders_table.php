@@ -18,6 +18,7 @@ return new class extends Migration
             $table->bigInteger('total');
             $table->bigInteger('discount');
             $table->enum('status',['Đã đặt hàng','Đã thanh toán','Đang giao hàng','Đã giao hàng'])->default('Đã đặt hàng');
+            $table->string('shipping_code',255)->nullable();
             $table->timestamps();
         });
     }

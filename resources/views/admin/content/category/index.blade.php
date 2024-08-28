@@ -92,7 +92,7 @@
                             <td class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap lg:p-5">{{$item -> parentCategory ? $item -> parentCategory->name : '' }}</td>
                             <td class="p-4 text-sm font-normal text-gray-900 overflow-hidden whitespace-nowrap overflow-ellipsis lg:p-5">
                                @if(!empty($item->icon_path))
-                                    <img src="{{asset( $item->icon_path)}}" class="w-full h-20">
+                                    <img src="{{asset($item->icon_path)}}" class="w-full h-20">
                                @endif
                             </td>
                             <td class="p-4 space-x-2 whitespace-nowrap lg:p-5">

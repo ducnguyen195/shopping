@@ -7,7 +7,7 @@
                     <li class="inline-flex items-center">
                         <a href="#" class="inline-flex items-center text-gray-700 hover:text-gray-900">
                             <svg class="w-5 h-5 mr-2.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
-                            Home
+                            Trang chủ
                         </a>
                     </li>
                     <li>
@@ -16,7 +16,9 @@
                                 <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd">
                                 </path>
                             </svg>
-                            <a href="#" class="ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2">Image</a>
+                            <a href="#" class="ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2">
+                                Ảnh
+                            </a>
                         </div>
                     </li>
                     <li>
@@ -25,13 +27,15 @@
                                 <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd">
                                 </path>
                             </svg>
-                            <span class="ml-1 text-sm font-medium text-gray-400 md:ml-2" aria-current="page">Add Image</span>
+                            <span class="ml-1 text-sm font-medium text-gray-400 md:ml-2" aria-current="page">
+                                Thêm ảnh {{$type_name}}
+                            </span>
                         </div>
                     </li>
                 </ol>
             </nav>
             <div>
-                <h2 class="font-bold text-2xl"> Add new {{$type}} image</h2>
+                <h2 class="font-bold text-2xl"> Thêm ảnh {{$type_name}} </h2>
             </div>
         </div>
         <div class="m-5 p-5 grid grid-cols-2  " >
@@ -52,9 +56,9 @@
                         <div class=" mt-5">
                             <label for="model_id" class=" block mb-2 font-medium text-gray-600" > Product Name </label>
                             <select type="text" id="model_id" name="model_id" class=" rounded-lg outline-violet-300 w-full " >
-                                <option value="0"> Select product</option>
+                                <option value="0"> Chọn {{$type_name}}</option>
                                 @foreach( $item as $detail )
-                                    <option value="{{ $detail->id }}">{{ $detail->name }} </option>
+                                    <option value="{{ $detail->id }}">{{ $detail->name }} @if($detail->barcode) Mã {{$detail->barcode}} @endif  </option>
                                 @endforeach
 
                             </select>
@@ -62,6 +66,7 @@
                         <div class=" mt-5  ">
                             <label for="path" class=" block mb-2 font-medium text-gray-600" > Path </label>
                             <div class="flex">
+                                <label for="image_label"></label>
                                 <input type="text" id="image_label" data-input="image_label" name="path[]" class=" rounded-lg outline-violet-300 w-full " >
                                 <div class="input-group-append">
                                     <button class="text-white font-medium text-sm px-5 py-2.5 text-center rounded-lg bg-gradient-to-br from-pink-500 to-violet-500 shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform"
@@ -72,6 +77,7 @@
                             </div>
 
                             <div class="flex mt-3">
+                                <label for="image_label-1"></label>
                                 <input type="text" id="image_label-1" data-input="image_label-1" name="path[]" class=" rounded-lg outline-violet-300 w-full " >
                                 <div class="input-group-append">
                                     <button class="text-white font-medium text-sm px-5 py-2.5 text-center rounded-lg bg-gradient-to-br from-pink-500 to-violet-500 shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform"
@@ -82,6 +88,7 @@
                             </div>
                         </div>
                         <div class="flex mt-3">
+                            <label for="image_label-2"></label>
                             <input type="text" id="image_label-2" name="path[]" data-input="image_label-2" class=" rounded-lg outline-violet-300 w-full " >
                             <div class="input-group-append">
                                 <button class="text-white font-medium text-sm px-5 py-2.5 text-center rounded-lg bg-gradient-to-br from-pink-500 to-violet-500 shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform"
@@ -108,32 +115,6 @@
 
     <!-- JS -->
     <script>
-        // document.addEventListener("DOMContentLoaded", function() {
-        //     document.getElementById('button-image').addEventListener('click', (event) => {
-        //         event.preventDefault();
-        //         window.open('/file-manager/fm-button', 'fm', 'width=1400,height=800');
-        //     });
-        //
-        //     document.getElementById('button-image-1').addEventListener('click', (event) => {
-        //         event.preventDefault();
-        //         window.open('/file-manager/fm-button', 'fm', 'width=1400,height=800');
-        //     });
-        //
-        //     document.getElementById('button-image-2').addEventListener('click', (event) => {
-        //         event.preventDefault();
-        //         window.open('/file-manager/fm-button', 'fm', 'width=1400,height=800');
-        //     });
-        //
-        // });
-        //
-        // // set file link
-        // function fmSetLink($url) {
-        //     // cấu hình link
-        //     document.getElementById('input_label').value = $url;
-        // }
-        //
-
-
         document.addEventListener("DOMContentLoaded", function() {
             // Set up event listeners for all buttons
             ['button-image', 'button-image-1', 'button-image-2'].forEach(buttonId => {

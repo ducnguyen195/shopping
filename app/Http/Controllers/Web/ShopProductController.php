@@ -32,20 +32,31 @@ class ShopProductController extends Controller
 
     public function listProduct(Request $request): View|Application|Factory
     {
-
+        if ( Auth::user()) {
+            $userID =  Auth::user()->id;
+            $cartTotalQuantity = \Cart::session($userID)->getTotalQuantity();
+        }else{
+            $cartTotalQuantity = 0;
+        }
         $categories = Category::where('model_type','=','product')->where('parent_id','=',0)->with('children')->get();
         $products = Product::query();
         $products = $this->filterProduct($products,$request);
         return view('web.content.list-product.all_product',[
             'products' => $products->paginate(12),
             'categories' => $categories,
+            'cartQuantity'=> $cartTotalQuantity,
             'query' => $request->query(),
         ]);
     }
 
     public function index($slug,Request $request): View|Application|Factory|RedirectResponse
     {
-
+        if ( Auth::user()) {
+            $userID =  Auth::user()->id;
+            $cartTotalQuantity = \Cart::session($userID)->getTotalQuantity();
+        }else{
+            $cartTotalQuantity = 0;
+        }
         $categories = Category::where('model_type','=','product')->where('parent_id','=',0)->with('children')->get();
         $category = Category::where('slug','=',$slug)->first();
         if(!$category) return redirect()->back();
@@ -55,11 +66,11 @@ class ShopProductController extends Controller
         $products = Product::query()->whereIn('category_id',$subCategory);
         $minPrice = floor($products->min('price') /1000000) * 1000000;
         $maxPrice = ceil($products->max('price') /1000000) * 1000000;
-
         $this->filterProduct($products,$request);
 
         return view('web.content.list-product.listProduct',[
             'category' => $category,
+            'cartQuantity'=> $cartTotalQuantity,
             'categories' => $categories,
             'products' => $products->paginate(12),
             'minPrice' => $minPrice,
@@ -70,11 +81,18 @@ class ShopProductController extends Controller
 
     public function detail ($slug): View|Application|Factory
     {
+        if ( Auth::user()) {
+            $userID =  Auth::user()->id;
+            $cartTotalQuantity = \Cart::session($userID)->getTotalQuantity();
+        }else{
+            $cartTotalQuantity = 0;
+        }
         $categories = Category::where('model_type','=','product')->where('parent_id','=',0)->with('children')->get();
         $product = Product::where('slug','=',$slug)->get();
         return view('web.content.product_detail.productDetail',[
             'categories' => $categories,
             'product'=>$product,
+            'cartQuantity'=> $cartTotalQuantity,
         ]);
     }
 }

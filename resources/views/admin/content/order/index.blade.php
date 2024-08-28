@@ -12,7 +12,7 @@
                                     <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
                                     </path>
                                 </svg>
-                                Home
+                                Trang chủ
                             </a>
                         </li>
                         <li>
@@ -21,19 +21,19 @@
                                     <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd">
                                     </path>
                                 </svg>
-                                <span class="ml-1 text-sm font-medium text-gray-400 md:ml-2" aria-current="page">Brand</span>
+                                <span class="ml-1 text-sm font-medium text-gray-400 md:ml-2" aria-current="page"> Đơn hàng</span>
                             </div>
                         </li>
                     </ol>
                 </nav>
-                <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl">All Order</h1>
+                <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl"> Tất cả đơn hàng </h1>
                 <div class="block items-center sm:flex md:divide-x md:divide-gray-100">
                     <div class="flex items-center w-full sm:justify-end">
                         <a href="{{route('admin.add_brand')}}">
                             <button type="button" data-modal-target="add-brand-modal" data-modal-toggle="add-brand-modal" class="inline-flex items-center py-2 px-3
                             text-sm font-medium text-center text-white rounded-lg bg-gradient-to-br from-pink-500 to-violet-700 sm:ml-auto shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform">
                                 <svg class="mr-2 -ml-1 w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
-                                Add Order
+                                Thêm đơn hàng
                             </button>
                         </a>
                     </div>
@@ -52,16 +52,19 @@
                                STT
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5">
-                                User Name
+                                Tên Khách Hàng
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5">
-                                Total
+                                Tổng tiền
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5">
-                                Discount
+                                Chiết khấu
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5">
-                                Status
+                                Trạng thái
+                            </th>
+                            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5">
+                                Mã vận đơn
                             </th>
                             <th scope="col" class="p-4 lg:p-5">
                             </th>
@@ -76,23 +79,70 @@
                             <td class="flex items-center p-4 mr-12 space-x-6 whitespace-nowrap lg:p-5 lg:mr-0">
 {{--                                <img class="w-8 h-8 rounded" src="https://demos.creative-tim.com/soft-ui-flowbite-pro/images/users/neil-sims.png" alt="Neil Sims avatar">--}}
                                 <div class="text-sm font-normal text-gray-500">
-                                    <div class="text-base font-semibold text-gray-900">{{$item->user_id}}</div>
+                                    <div class="text-base font-semibold text-gray-900">{{$item->user[0]->name}}</div>
                                 </div>
                             </td>
-                            <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">{{$item -> total}}</td>
+                            <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">{{number_format($item -> total,0,'.','.')}} đ</td>
                             <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">{{$item -> discount}}</td>
-                            <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap lg:p-5">{!! $item ->status !!}</td>
+                            <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap lg:p-5">
+                                <form class="max-w-sm mx-auto">
+                                    <div class="flex">
+                                        <button id="states-button" data-dropdown-toggle="dropdown-states" class="flex-shrink-0 gap-2 z-10 inline-flex  py-2.5 items-center text-sm font-medium text-center text-gray-500  focus:ring-0 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600" type="button">
+                                            <i class="fa-solid fa-circle text-amber-400"></i>
+                                            Đã đặt hàng
+                                            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                            </svg>
+                                        </button>
+                                        <div id="dropdown-states" class="z-20 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="states-button">
+                                                <li>
+                                                    <button type="button" class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+                                                        <div class="inline-flex items-center gap-2">
+                                                            <i class="fa-solid fa-circle text-blue-600"></i>
+                                                            Đã thanh toán
+                                                        </div>
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button type="button" class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+                                                        <div class="inline-flex items-center gap-2">
+                                                            <i class="fa-solid fa-circle text-amber-400"></i>
+                                                            Đang giao hàng
+                                                        </div>
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button type="button" class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+                                                        <div class="inline-flex items-center gap-2">
+                                                            <i class="fa-solid fa-circle text-green-400"></i>
+                                                            Đã giao hàng
+                                                        </div>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </form>
+{{--                                <select name="" id="" class="border-none focus:ring-0  bg-gray-50 hover:bg-gray-100">--}}
+{{--                                    <option value=""> <i class="fa-solid fa-circle text-amber-400 w-5 h-5"></i> {!! $item ->status !!}</option>--}}
+{{--                                    <option value=""> Đã thanh toán</option>--}}
+{{--                                    <option value=""> Đang vận chuyển</option>--}}
+{{--                                    <option value=""> Đã giao hàng</option>--}}
+
+{{--                                </select>--}}
+                            </td>
+                            <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">{{$item->shipping_code}} </td>
+
                             <td class="p-4 space-x-2 whitespace-nowrap lg:p-5">
                                 <a href="{{route('admin.edit_order',$item ->id)}}">
-                                    <button type="button" data-modal-target="edit-brand-modal" data-modal-toggle="edit-brand-modal" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 hover:text-gray-900 hover:scale-[1.02] transition-all">
-                                        <svg class="mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
-                                        Edit brand
+                                    <button type="button" title="Sửa" data-modal-target="edit-brand-modal" data-modal-toggle="edit-brand-modal" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 hover:text-gray-900 hover:scale-[1.02] transition-all">
+                                        <svg class=" w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
                                     </button>
                                 </a>
                                 <a href="#">
-                                    <button type="button" data-modal-target="delete-brand-modal-{{$item->id}}" data-modal-toggle="delete-brand-modal-{{$item->id}}" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-gradient-to-br from-red-500 to-red-600 rounded-lg shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform">
-                                        <svg class="mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
-                                        Delete user
+                                    <button type="button" title="Xóa" data-modal-target="delete-brand-modal-{{$item->id}}" data-modal-toggle="delete-brand-modal-{{$item->id}}" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-gradient-to-br from-red-500 to-red-600 rounded-lg shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform">
+                                        <svg class=" w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
                                     </button>
                                 </a>
                             </td>
@@ -111,12 +161,12 @@
                                     </div>
                                     <div class="p-6 pt-0 text-center">
                                         <svg class="mx-auto w-20 h-20 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                        <h3 class="mt-5 mb-6 text-xl font-normal text-gray-500">Are you sure you want to delete this brand ?</h3>
+                                        <h3 class="mt-5 mb-6 text-xl font-normal text-gray-500"> Bạn có muốn xóa không ?</h3>
                                         <a href="{{route('admin.destroy_brand',$item->id)}}" class="text-white bg-gradient-to-br from-red-400 to-red-600 font-medium rounded-lg text-base inline-flex items-center px-3 py-2.5 text-center mr-2 shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform">
-                                            Yes, I'm sure
+                                            Có
                                         </a>
                                         <a href="#" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 font-medium inline-flex items-center rounded-lg text-base px-3 py-2.5 text-center hover:scale-[1.02] transition-transform" data-modal-toggle="delete-brand-modal-{{$item->id}}">
-                                            No, cancel
+                                            Không
                                         </a>
                                     </div>
                                 </div>

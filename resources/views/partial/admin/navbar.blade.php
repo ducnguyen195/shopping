@@ -2,11 +2,7 @@
     <div class="py-3 px-3 lg:px-5 lg:pl-3">
         <div class="flex justify-between items-center">
             <div class="flex justify-start items-center">
-                <button id="toggleSidebar" aria-expanded="true" aria-controls="sidebar" class="hidden p-2 mr-4 text-gray-600 rounded cursor-pointer lg:inline hover:text-gray-900 hover:bg-gray-100">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd">
-                        </path>
-                    </svg>
+                <button id="toggleSidebar" aria-expanded="true" aria-controls="sidebar" class="hidden mr-4 text-gray-600 rounded cursor-pointer lg:inline hover:text-gray-900 hover:bg-gray-100">
                 </button>
                 <button id="toggleSidebarMobile" aria-expanded="true" aria-controls="sidebar" class="p-2 mr-2 text-gray-600 rounded cursor-pointer lg:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 focus:ring-2 focus:ring-gray-100">
                     <svg id="toggleSidebarMobileHamburger" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -19,8 +15,8 @@
                     </svg>
                 </button>
                 <a href="{{route('admin.index')}}" class="text-md font-semibold flex items-center lg:mr-1.5">
-                    <img src="{{asset('images/logo.png')}}" class="mr-2 h-8" alt="Creative Tim Logo">
-                    <span class="hidden md:inline-block self-center text-xl font-bold whitespace-nowrap">Hala Fruit Administrator</span>
+                    <img src="{{asset('images/logo.png')}}" class="mr-2 h-10" alt="Creative Tim Logo">
+                    <span class="hidden md:inline-block self-center text-xl font-bold whitespace-nowrap">Hala Fruit Admind</span>
                 </a>
                 <form action="#" method="GET" class="hidden lg:block lg:pl-8">
                     <label for="topbar-search" class="sr-only">Search</label>
